@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imashi Lakshan - Portfolio</title>
+    <link rel="stylesheet" href="#style-css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2 data-en="Imashi Lakshan" data-jp="イマシ・ラクシャン">Imashi Lakshan</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link" data-en="Home" data-jp="ホーム">Home</a>
+                <a href="#about" class="nav-link" data-en="About" data-jp="私について">About</a>
+                <a href="#experience" class="nav-link" data-en="Experience" data-jp="経験">Experience</a>
+                <a href="#projects" class="nav-link" data-en="Projects" data-jp="プロジェクト">Projects</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-jp="連絡先">Contact</a>
+                <a href="#cv" class="nav-link" data-en="CV" data-jp="履歴書">CV</a>
+            </div>
+            <div class="nav-controls">
+                <button class="lang-toggle" onclick="toggleLanguage()">
+                    <i class="fas fa-globe"></i>
+                    <span id="lang-indicator">EN</span>
+                </button>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title" data-en="Hello, I'm Imashi" data-jp="こんにちは、イマシです">Hello, I'm Imashi</h1>
+                    <p class="hero-subtitle" data-en="Quality Assurance & Service Professional" data-jp="品質保証・サービス専門家">Quality Assurance & Service Professional</p>
+                    <p class="hero-description" data-en="A dedicated professional from Sri Lanka with experience in QA testing, customer service, and warehouse management. Currently studying in Japan and seeking part-time opportunities to contribute my skills while learning Japanese culture." data-jp="QAテスト、カスタマーサービス、倉庫管理の経験を持つスリランカ出身の献身的な専門家。現在日本で勉強しており、日本の文化を学びながらスキルを活かせるパートタイムの機会を求めています。">A dedicated professional from Sri Lanka with experience in QA testing, customer service, and warehouse management. Currently studying in Japan and seeking part-time opportunities to contribute my skills while learning Japanese culture.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary" data-en="Contact Me" data-jp="お問い合わせ">Contact Me</a>
+                        <a href="#projects" class="btn btn-secondary" data-en="View Work" data-jp="作品を見る">View Work</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-container">
+                        <img src="./Images/me.png" alt="Imashi Lakshan Profile Photo">
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-indicator">
+                <div class="scroll-wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-en="About Me" data-jp="私について">About Me</h2>
+                <p data-en="Get to know me better" data-jp="私についてもっと知ってください">Get to know me better</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 data-en="From Sri Lanka to Japan" data-jp="スリランカから日本へ">From Sri Lanka to Japan</h3>
+                    <p data-en="I'm a dedicated professional from Sri Lanka with hands-on experience in quality assurance, customer service, and warehouse management. Currently pursuing my studies in Japan, I bring a unique blend of technical expertise and customer service excellence, making me an ideal candidate for part-time opportunities in the Japanese market." data-jp="私は品質保証、カスタマーサービス、倉庫管理の実務経験を持つスリランカ出身の献身的な専門家です。現在日本で勉強しており、技術的専門知識と優れたカスタマーサービスのユニークな組み合わせを持ち、日本市場でのパートタイムの機会に理想的な候補者です。">I'm a dedicated professional from Sri Lanka with hands-on experience in quality assurance, customer service, and warehouse management. Currently pursuing my studies in Japan, I bring a unique blend of technical expertise and customer service excellence, making me an ideal candidate for part-time opportunities in the Japanese market.</p>
+                    
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4 data-en="Technical Skills" data-jp="技術スキル">Technical Skills</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Quality Assurance</span>
+                                <span class="skill-tag">Software Testing</span>
+                                <span class="skill-tag">Documentation</span>
+                                <span class="skill-tag">Problem Solving</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 data-en="Service & Operations" data-jp="サービス・運営">Service & Operations</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Customer Service</span>
+                                <span class="skill-tag">Cash Handling</span>
+                                <span class="skill-tag">Inventory Management</span>
+                                <span class="skill-tag">Team Coordination</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 data-en="Languages" data-jp="言語">Languages</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">English (Fluent)</span>
+                                <span class="skill-tag">Japanese (N4-N3)</span>
+                                <span class="skill-tag">Sinhala (Native)</span>
+                                <span class="skill-tag">Tamil (Basic)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h3>1+</h3>
+                        <p data-en="Years in Japan" data-jp="日本での年数">Years in Japan</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>3+</h3>
+                        <p data-en="Years Work Experience" data-jp="年間の職歴">Years Work Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>4</h3>
+                        <p data-en="Languages Spoken" data-jp="話せる言語">Languages Spoken</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-en="Experience" data-jp="経験">Experience</h2>
+                <p data-en="My professional journey" data-jp="私の職業的な旅">My professional journey</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 data-en="Student in Japan" data-jp="日本の学生">Student in Japan</h3>
+                        <h4 data-en="Japanese Language & Cultural Studies" data-jp="日本語・文化研究">Japanese Language & Cultural Studies</h4>
+                        <span class="timeline-date" data-en="2023 - Present" data-jp="2023年 - 現在">2023 - Present</span>
+                        <p data-en="Currently studying Japanese language and culture while seeking part-time opportunities. Actively participating in cultural exchange programs and volunteer activities to better understand Japanese business practices and customer service standards." data-jp="現在、日本語と文化を学びながら、パートタイムの機会を求めています。日本のビジネス慣行と顧客サービス基準をよりよく理解するために、文化交流プログラムやボランティア活動に積極的に参加しています。">Currently studying Japanese language and culture while seeking part-time opportunities. Actively participating in cultural exchange programs and volunteer activities to better understand Japanese business practices and customer service standards.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 data-en="QA Technician" data-jp="QA技術者">QA Technician</h3>
+                        <h4 data-en="TechSolutions Lanka (IT Company)" data-jp="テックソリューションズ・ランカ（IT企業）">TechSolutions Lanka (IT Company)</h4>
+                        <span class="timeline-date" data-en="2021 - 2023" data-jp="2021年 - 2023年">2021 - 2023</span>
+                        <p data-en="Responsible for software testing, bug identification, and quality documentation. Conducted manual testing of web applications and mobile apps, collaborated with development teams to ensure product quality standards. Gained expertise in test case creation and defect tracking systems." data-jp="ソフトウェアテスト、バグ識別、品質文書化を担当。ウェブアプリケーションとモバイルアプリの手動テストを実施し、開発チームと協力して製品品質基準を確保。テストケース作成と欠陥追跡システムの専門知識を習得。">Responsible for software testing, bug identification, and quality documentation. Conducted manual testing of web applications and mobile apps, collaborated with development teams to ensure product quality standards. Gained expertise in test case creation and defect tracking systems.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 data-en="All-Round Service Staff" data-jp="オールラウンド・サービススタッフ">All-Round Service Staff</h3>
+                        <h4 data-en="Spice Garden Restaurant" data-jp="スパイスガーデン・レストラン">Spice Garden Restaurant</h4>
+                        <span class="timeline-date" data-en="2020 - 2021" data-jp="2020年 - 2021年">2020 - 2021</span>
+                        <p data-en="Worked as cashier, server, and customer service representative. Handled cash transactions, managed customer orders, maintained restaurant cleanliness, and ensured excellent customer satisfaction. Developed strong multitasking abilities and customer communication skills in a fast-paced environment." data-jp="キャッシャー、サーバー、カスタマーサービス担当として勤務。現金取引の処理、顧客注文の管理、レストランの清潔さの維持、優れた顧客満足の確保。ペースの速い環境で強力なマルチタスク能力と顧客コミュニケーションスキルを開発。">Worked as cashier, server, and customer service representative. Handled cash transactions, managed customer orders, maintained restaurant cleanliness, and ensured excellent customer satisfaction. Developed strong multitasking abilities and customer communication skills in a fast-paced environment.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 data-en="Warehouse Coordinator" data-jp="倉庫コーディネーター">Warehouse Coordinator</h3>
+                        <h4 data-en="Ceylon Biscuit Company (Local Branch)" data-jp="セイロンビスケット会社（地元支社）">Ceylon Biscuit Company (Local Branch)</h4>
+                        <span class="timeline-date" data-en="2019 - 2020" data-jp="2019年 - 2020年">2019 - 2020</span>
+                        <p data-en="Managed inventory for a world-class biscuit manufacturing company's local warehouse. Responsible for stock control, order processing, quality checking of incoming products, and maintaining organized storage systems. Ensured timely distribution and adherence to food safety standards." data-jp="世界クラスのビスケット製造会社の地元倉庫で在庫管理を担当。在庫管理、注文処理、入荷製品の品質確認、整理された保管システムの維持を担当。適時配送と食品安全基準の遵守を確保。">Managed inventory for a world-class biscuit manufacturing company's local warehouse. Responsible for stock control, order processing, quality checking of incoming products, and maintaining organized storage systems. Ensured timely distribution and adherence to food safety standards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-en="Projects" data-jp="プロジェクト">Projects</h2>
+                <p data-en="Some of my recent work" data-jp="私の最近の作品">Some of my recent work</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1596526131834-e8b78b28f7c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Quality Assurance Documentation">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-file-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 data-en="QA Testing Documentation System" data-jp="QAテスト文書システム">QA Testing Documentation System</h3>
+                        <p data-en="Developed comprehensive testing documentation and quality assurance protocols for software applications. Created detailed test cases, bug reports, and quality metrics tracking systems." data-jp="ソフトウェアアプリケーションの包括的なテスト文書と品質保証プロトコルを開発。詳細なテストケース、バグレポート、品質メトリクス追跡システムを作成。">Developed comprehensive testing documentation and quality assurance protocols for software applications. Created detailed test cases, bug reports, and quality metrics tracking systems.</p>
+                        <div class="project-tech">
+                            <span>Manual Testing</span>
+                            <span>Documentation</span>
+                            <span>Bug Tracking</span>
+                            <span>Quality Control</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Restaurant Service Management">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-utensils"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 data-en="Restaurant Service Excellence" data-jp="レストランサービス・エクセレンス">Restaurant Service Excellence</h3>
+                        <p data-en="Managed multi-faceted restaurant operations including cashier duties, customer service, and order management. Implemented efficient service workflows that improved customer satisfaction and reduced wait times." data-jp="キャッシャー業務、カスタマーサービス、注文管理を含む多面的なレストラン運営を管理。顧客満足度を向上させ、待ち時間を短縮する効率的なサービスワークフローを実装。">Managed multi-faceted restaurant operations including cashier duties, customer service, and order management. Implemented efficient service workflows that improved customer satisfaction and reduced wait times.</p>
+                        <div class="project-tech">
+                            <span>Customer Service</span>
+                            <span>POS Systems</span>
+                            <span>Cash Handling</span>
+                            <span>Multitasking</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Warehouse Management">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-warehouse"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 data-en="Warehouse Optimization Project" data-jp="倉庫最適化プロジェクト">Warehouse Optimization Project</h3>
+                        <p data-en="Streamlined inventory management processes for a world-class biscuit manufacturing company. Implemented quality control measures and organized storage systems that increased efficiency by 25%." data-jp="世界クラスのビスケット製造会社の在庫管理プロセスを合理化。品質管理措置と効率を25%向上させる整理された保管システムを実装。">Streamlined inventory management processes for a world-class biscuit manufacturing company. Implemented quality control measures and organized storage systems that increased efficiency by 25%.</p>
+                        <div class="project-tech">
+                            <span>Inventory Management</span>
+                            <span>Quality Control</span>
+                            <span>Process Optimization</span>
+                            <span>Food Safety Standards</span>
+                        </div>
+                    </div>
+                </div>
+            </div> with real-time updates, drag-and-drop functionality, and team collaboration features.</p>
+                        <div class="project-tech">
+                            <span>Vue.js</span>
+                            <span>Socket.io</span>
+                            <span>Express</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Weather App">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 data-en="Weather Forecast App" data-jp="天気予報アプリ">Weather Forecast App</h3>
+                        <p data-en="A responsive weather application that provides detailed forecasts, interactive maps, and location-based weather alerts." data-jp="詳細な予報、インタラクティブマップ、位置ベースの天気アラートを提供するレスポンシブな天気アプリケーション。">A responsive weather application that provides detailed forecasts, interactive maps, and location-based weather alerts.</p>
+                        <div class="project-tech">
+                            <span>JavaScript</span>
+                            <span>OpenWeather API</span>
+                            <span>Chart.js</span>
+                            <span>CSS3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Download Section -->
+    <section id="cv" class="cv-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-en="Download My CV" data-jp="履歴書をダウンロード">Download My CV</h2>
+                <p data-en="Get my complete professional profile" data-jp="私の完全なプロフィールを取得">Get my complete professional profile</p>
+            </div>
+            <div class="cv-content">
+                <div class="cv-preview">
+                    <div class="cv-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="cv-info">
+                        <h3 data-en="Professional Resume" data-jp="プロフェッショナル履歴書">Professional Resume</h3>
+                        <p data-en="Comprehensive overview of my skills, experience, and qualifications perfect for Japanese employers." data-jp="日本の雇用主に最適な私のスキル、経験、資格の包括的な概要。">Comprehensive overview of my skills, experience, and qualifications perfect for Japanese employers.</p>
+                        <div class="cv-details">
+                            <span class="cv-detail">
+                                <i class="fas fa-language"></i>
+                                <span data-en="Available in English & Japanese" data-jp="英語・日本語対応">Available in English & Japanese</span>
+                            </span>
+                            <span class="cv-detail">
+                                <i class="fas fa-clock"></i>
+                                <span data-en="Updated January 2024" data-jp="2024年1月更新">Updated January 2024</span>
+                            </span>
+                            <span class="cv-detail">
+                                <i class="fas fa-file-alt"></i>
+                                <span data-en="PDF Format" data-jp="PDF形式">PDF Format</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cv-actions">
+                    <div class="cv-buttons">
+                        <a href="./documents/Imashi_Lakshan_CV_EN.pdf" download="Imashi_Lakshan_CV_English.pdf" class="btn btn-primary cv-btn">
+                            <i class="fas fa-download"></i>
+                            <span data-en="Download English CV" data-jp="英語履歴書をダウンロード">Download English CV</span>
+                        </a>
+                        <a href="./documents/Imashi_Lakshan_CV_JP.pdf" download="Imashi_Lakshan_CV_Japanese.pdf" class="btn btn-secondary cv-btn">
+                            <i class="fas fa-download"></i>
+                            <span data-en="Download Japanese CV" data-jp="日本語履歴書をダウンロード">Download Japanese CV</span>
+                        </a>
+                    </div>
+                    <div class="cv-note">
+                        <i class="fas fa-info-circle"></i>
+                        <p data-en="Both versions contain the same information formatted for respective language preferences." data-jp="両方のバージョンには、それぞれの言語設定に合わせてフォーマットされた同じ情報が含まれています。">Both versions contain the same information formatted for respective language preferences.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-en="Contact Me" data-jp="お問い合わせ">Contact Me</h2>
+                <p data-en="Let's work together" data-jp="一緒に働きましょう">Let's work together</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 data-en="Get in Touch" data-jp="お問い合わせください">Get in Touch</h3>
+                    <p data-en="I'm currently looking for part-time opportunities in Japan. Feel free to reach out if you have any questions or would like to collaborate!" data-jp="現在、日本でのパートタイムの機会を探しています。ご質問やコラボレーションをご希望の場合は、お気軽にお問い合わせください！">I'm currently looking for part-time opportunities in Japan. Feel free to reach out if you have any questions or would like to collaborate!</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>imashi.lakshan@email.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+81-90-1234-5678</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-en="Tokyo, Japan" data-jp="東京、日本">Tokyo, Japan</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" data-en-placeholder="Your Name" data-jp-placeholder="お名前" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" data-en-placeholder="Your Email" data-jp-placeholder="メールアドレス" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject" data-en-placeholder="Subject" data-jp-placeholder="件名" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" data-en-placeholder="Your Message" data-jp-placeholder="メッセージ" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-en="Send Message" data-jp="メッセージを送信">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p data-en="© 2024 Imashi Lakshan. All rights reserved." data-jp="© 2024 イマシ・ラクシャン。全著作権所有。">© 2024 Imashi Lakshan. All rights reserved.</p>
+                <p data-en="Made with ❤️ in Japan" data-jp="日本で❤️を込めて作成">Made with ❤️ in Japan</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle Functionality
+        let currentLanguage = 'en';
+        
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'jp' : 'en';
+            const langIndicator = document.getElementById('lang-indicator');
+            langIndicator.textContent = currentLanguage === 'en' ? 'EN' : 'JP';
+            
+            // Update all elements with data attributes
+            const elements = document.querySelectorAll('[data-en], [data-jp]');
+            elements.forEach(element => {
+                if (currentLanguage === 'en' && element.getAttribute('data-en')) {
+                    element.textContent = element.getAttribute('data-en');
+                } else if (currentLanguage === 'jp' && element.getAttribute('data-jp')) {
+                    element.textContent = element.getAttribute('data-jp');
+                }
+            });
+            
+            // Update form placeholders
+            const inputs = document.querySelectorAll('input[data-en-placeholder], textarea[data-en-placeholder]');
+            inputs.forEach(input => {
+                if (currentLanguage === 'en' && input.getAttribute('data-en-placeholder')) {
+                    input.placeholder = input.getAttribute('data-en-placeholder');
+                } else if (currentLanguage === 'jp' && input.getAttribute('data-jp-placeholder')) {
+                    input.placeholder = input.getAttribute('data-jp-placeholder');
+                }
+            });
+        }
+        
+        // Theme Toggle Functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeButton = document.querySelector('.theme-toggle i');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeButton.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeButton.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Initialize theme from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeButton = document.querySelector('.theme-toggle i');
+            
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+                themeButton.className = 'fas fa-sun';
+            }
+        });
+        
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+        
+        // Update navbar background for dark theme
+        function updateNavbarForTheme() {
+            const navbar = document.querySelector('.navbar');
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            
+            if (window.scrollY > 100) {
+                navbar.style.background = isDark ? 'rgba(26, 26, 26, 0.98)' : 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = isDark ? 'rgba(26, 26, 26, 0.95)' : 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        }
+        
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.project-card, .timeline-item, .stat-item');
+            animateElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+        
+        // Form submission
+        document.querySelector('.contact-form form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(e.target);
+            const name = formData.get('name') || e.target.querySelector('input[placeholder*="Name"]').value;
+            const email = formData.get('email') || e.target.querySelector('input[type="email"]').value;
+            const subject = formData.get('subject') || e.target.querySelector('input[placeholder*="Subject"]').value;
+            const message = formData.get('message') || e.target.querySelector('textarea').value;
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                alert(currentLanguage === 'en' ? 'Please fill in all fields.' : 'すべてのフィールドを入力してください。');
+                return;
+            }
+            
+            // Show success message
+            alert(currentLanguage === 'en' ? 'Thank you for your message! I will get back to you soon.' : 'メッセージありがとうございます！すぐに返信いたします。');
+            
+            // Reset form
+            e.target.reset();
+        });
+        
+        // Typing effect for hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+        
+        // Initialize typing effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroTitle = document.querySelector('.hero-title');
+            const originalText = heroTitle.textContent;
+            setTimeout(() => {
+                typeWriter(heroTitle, originalText, 80);
+            }, 1000);
+        });
+        
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+        
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+        
+        // Cursor trail effect
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.createElement('div');
+            cursor.className = 'cursor-trail';
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            document.body.appendChild(cursor);
+            
+            setTimeout(() => {
+                cursor.remove();
+            }, 1000);
+        });
+        
+        // Add styles for cursor trail
+        const style = document.createElement('style');
+        style.textContent = `
+            .cursor-trail {
+                position: fixed;
+                width: 10px;
+                height: 10px;
+                background: var(--primary-color);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                opacity: 0.7;
+                animation: cursorFade 1s ease-out forwards;
+            }
+            
+            @keyframes cursorFade {
+                to {
+                    opacity: 0;
+                    transform: scale(0);
+                }
+            }
+            
+            .loaded {
+                opacity: 1;
+                transition: opacity 0.5s ease;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Project card hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) rotateX(5deg)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) rotateX(0deg)';
+            });
+        });
+        
+        // Skill tags animation
+        document.querySelectorAll('.skill-tag').forEach((tag, index) => {
+            tag.style.animationDelay = `${index * 0.1}s`;
+            tag.style.animation = 'fadeInUp 0.6s ease forwards';
+        });
+        
+        // Counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start) + '+';
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target + '+';
+                }
+            }
+            
+            updateCounter();
+        }
+        
+        // Initialize counter animation when stats come into view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('h3');
+                    const target = parseInt(statNumber.textContent);
+                    animateCounter(statNumber, target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+        
+        document.querySelectorAll('.stat-item').forEach(stat => {
+            statsObserver.observe(stat);
+        });
+    </script>
+</body>
+</html>
+
+<style id="style-css">
+:root {
+    /* Japanese Cultural Colors */
+    --primary-color: #1e3a8a; /* Deep indigo - traditional Japanese ai-iro */
+    --secondary-color: #dc2626; /* Japanese red - aka */
+    --accent-color: #f59e0b; /* Gold - symbolizing prosperity */
+    --sakura-pink: #ffb7c5; /* Cherry blossom pink */
+    --matcha-green: #7c9885; /* Matcha green - uguisu-iro */
+    --text-color: #1f2937;
+    --text-light: #6b7280;
+    --bg-color: #ffffff;
+    --bg-secondary: #f8fafc;
+    --border-color: #e5e7eb;
+    --shadow: 0 10px 30px rgba(30, 58, 138, 0.1);
+    --shadow-hover: 0 15px 40px rgba(30, 58, 138, 0.15);
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--sakura-pink));
+    --japanese-gradient: linear-gradient(135deg, var(--primary-color), var(--matcha-green));
+}
+
+[data-theme="dark"] {
+    --text-color: #f9fafb;
+    --text-light: #d1d5db;
+    --bg-color: #111827;
+    --bg-secondary: #1f2937;
+    --border-color: #374151;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(248, 250, 252, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(30, 58, 138, 0.1);
+}
+
+.navbar.scrolled {
+    background: rgba(248, 250, 252, 0.98) !important;
+    box-shadow: 0 2px 20px rgba(30, 58, 138, 0.1);
+}
+
+[data-theme="dark"] .navbar {
+    background: rgba(17, 24, 39, 0.95) !important;
+    border-bottom: 1px solid rgba(55, 65, 81, 0.3);
+}
+
+[data-theme="dark"] .navbar.scrolled {
+    background: rgba(17, 24, 39, 0.98) !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo h2 {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.lang-toggle, .theme-toggle {
+    background: none;
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lang-toggle:hover, .theme-toggle:hover {
+    background: var(--gradient);
+    color: white;
+    border-color: transparent;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(30, 58, 138, 0.1) 0%,
+        rgba(220, 38, 38, 0.05) 25%,
+        rgba(124, 152, 133, 0.1) 50%,
+        rgba(245, 158, 11, 0.05) 75%,
+        rgba(255, 183, 197, 0.1) 100%
+    ),
+    url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -2;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(248, 250, 252, 0.8);
+    z-index: -1;
+}
+
+[data-theme="dark"] .hero::before {
+    background: rgba(17, 24, 39, 0.8);
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease 0.2s both;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease 0.4s both;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    animation: fadeInUp 1s ease 0.6s both;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--gradient);
+    color: white;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.image-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    animation: fadeInRight 1s ease 0.8s both;
+}
+
+.image-container img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient);
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover .image-overlay {
+    opacity: 0.1;
+}
+
+.hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator {
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    position: relative;
+}
+
+.scroll-wheel {
+    width: 4px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll 2s infinite;
+}
+
+/* Section Styles */
+section {
+    padding: 5rem 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+}
+
+/* About Section */
+.about {
+    background: var(--bg-secondary);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.about-text h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+}
+
+.skills-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.skill-category h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    background: var(--japanese-gradient);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+}
+
+.skill-tag:hover {
+    transform: translateY(-2px);
+}
+
+.about-stats {
+    display: grid;
+    gap: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 2rem;
+    background: var(--bg-color);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Experience Section */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gradient);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    background: var(--gradient);
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    border: 4px solid var(--bg-color);
+}
+
+.timeline-content {
+    width: 45%;
+    padding: 2rem;
+    background: var(--bg-color);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-left: 55%;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-right: 55%;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.timeline-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.timeline-content h4 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-date {
+    display: inline-block;
+    background: var(--japanese-gradient);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.timeline-content p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Projects Section */
+.projects {
+    background: var(--bg-secondary);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--bg-color);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.project-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-link {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.project-link:hover {
+    transform: scale(1.1);
+}
+
+.project-content {
+    padding: 2rem;
+}
+
+.project-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.project-content p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.project-tech span {
+    background: var(--bg-secondary);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.project-tech span:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Contact Section */
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contact-info h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+}
+
+.contact-items {
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+.contact-item i {
+    width: 20px;
+    color: var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    background: var(--japanese-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.contact-form {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Footer */
+.footer {
+    background: var(--bg-secondary);
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-content p {
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-5px) translateX(-50%);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) translateY(15px);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-color);
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        flex-direction: row !important;
+    }
+    
+    .timeline-dot {
+        left: 20px;
+    }
+    
+    .timeline-content {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+        margin-right: 0 !important;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+    }
+}
