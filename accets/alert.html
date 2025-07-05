@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert Modal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#1dd1a1',
+                        'primary-light': '#26d0ce',
+                        'primary-dark': '#16a085'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .btn-gradient {
+            background: linear-gradient(135deg, #1dd1a1, #26d0ce);
+            transition: all 0.3s ease;
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #26d0ce, #1dd1a1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(29, 209, 161, 0.3);
+        }
+        .modal-enter {
+            animation: modalEnter 0.3s ease-out forwards;
+        }
+        @keyframes modalEnter {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Alert Modal -->
+    <div id="alertModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
+        <div class="bg-white rounded-2xl p-6 md:p-8 max-w-md w-full relative shadow-2xl modal-enter">
+            <div class="text-center">
+                <!-- Success Icon -->
+                <div class="mx-auto flex items-center justify-center w-16 h-16 bg-gradient-to-r from-primary to-primary-light rounded-full mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                
+                <!-- Title -->
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
+                
+                <!-- Message -->
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Your CV has been downloaded successfully. Thank you for your interest in my work! 
+                    Feel free to reach out if you have any questions or opportunities to discuss.
+                </p>
+                
+                <!-- Close Button -->
+                <button id="closeAlertModal" class="btn-gradient text-white px-8 py-3 rounded-full font-semibold hover:transform hover:-translate-y-1 transition-all duration-300 w-full">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Close modal function
+        function closeAlertModal() {
+            if (window.parent && window.parent !== window) {
+                // If this is loaded in an iframe, communicate with parent
+                window.parent.postMessage('closeAlert', '*');
+            } else {
+                // If standalone, just hide
+                document.getElementById('alertModal').style.display = 'none';
+            }
+        }
+
+        // Event listeners
+        document.getElementById('closeAlertModal').addEventListener('click', closeAlertModal);
+        
+        document.getElementById('alertModal').addEventListener('click', (e) => {
+            if (e.target.id === 'alertModal') {
+                closeAlertModal();
+            }
+        });
+
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeAlertModal();
+            }
+        });
+
+        // Auto-focus for accessibility
+        window.addEventListener('load', () => {
+            document.getElementById('closeAlertModal').focus();
+        });
+    </script>
+</body>
+</html>
