@@ -21,9 +21,7 @@
                         'float': 'float 3s ease-in-out infinite',
                         'typing': 'typing 3s steps(40, end), blink-caret 0.75s step-end infinite',
                         'float-shape': 'floatShape 20s infinite linear',
-                        'particle-float': 'particleFloat 1s ease-out forwards',
-                        'scroll-left': 'scrollLeft 20s linear infinite',
-                        'scroll-left-fast': 'scrollLeft 15s linear infinite'
+                        'particle-float': 'particleFloat 1s ease-out forwards'
                     },
                     keyframes: {
                         fadeInUp: {
@@ -50,10 +48,6 @@
                         particleFloat: {
                             '0%': { opacity: '1', transform: 'translateY(0) scale(1)' },
                             '100%': { opacity: '0', transform: 'translateY(-50px) scale(0)' }
-                        },
-                        scrollLeft: {
-                            '0%': { transform: 'translateX(100%)' },
-                            '100%': { transform: 'translateX(-100%)' }
                         }
                     }
                 }
@@ -159,57 +153,15 @@
             align-items: center;
         }
         
-        /* Ticker Styles */
-        .ticker-container {
-            background: linear-gradient(90deg, #1dd1a1, #26d0ce, #1dd1a1);
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
+        /* Animation iframe styling */
+        .animation-iframe {
+            border: none;
+            width: 100%;
             height: 80px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .ticker-content {
-            display: flex;
-            align-items: center;
-            animation: scrollLeft 20s linear infinite;
-            white-space: nowrap;
-        }
-        
-        .ticker-item {
-            display: inline-flex;
-            align-items: center;
-            margin-right: 60px;
-            color: black;
-            font-weight: 600;
-            font-size: 18px;
-            white-space: nowrap;
-        }
-        
-        .ticker-star {
-            width: 24px;
-            height: 24px;
-            margin-right: 15px;
-            animation: float 2s ease-in-out infinite;
-            display: inline-block;
-        }
-        
-        @media (max-width: 768px) {
-            .ticker-item {
-                font-size: 16px;
-                margin-right: 40px;
-            }
-            .ticker-star {
-                width: 20px;
-                height: 20px;
-                margin-right: 10px;
-            }
-        }
-        
-        /* Pause animation on hover */
-        .ticker-container:hover .ticker-content {
-            animation-play-state: paused;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 30;
         }
     </style>
 </head>
@@ -296,61 +248,8 @@
             </div>
         </div>
 
-        <!-- Animated Ticker Bar -->
-        <div class="absolute w-full ticker-container z-30">
-            <div class="ticker-content">
-                <!-- First set of items -->
-                <div class="ticker-item">
-                    <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star" style="animation-delay: 0s;">
-                    WEBSITE DEVELOPMENT
-                </div>
-                <div class="ticker-item">
-                    <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star" style="animation-delay: 0.3s;">
-                    MOBILE APP DEVELOPMENT
-                </div>
-                <div class="ticker-item">
-                    <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star" style="animation-delay: 0.6s;">
-                    BACKEND SYSTEMS
-                </div>
-                <div class="ticker-item">
-                    <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star" style="animation-delay: 0.9s;">
-                    DATABASE DESIGN
-                </div>
-                <div class="ticker-item">
-                    <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star" style="animation-delay: 1.2s;">
-                    API DEVELOPMENT
-                </div>
-                <div class="ticker-item">
-                    <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star" style="animation-delay: 1.5s;">
-                    CLOUD SOLUTIONS
-                </div>
-                <!-- Duplicate set for seamless loop -->
-                <div class="ticker-item">
-                    <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star" style="animation-delay: 0s;">
-                    WEBSITE DEVELOPMENT
-                </div>
-                <div class="ticker-item">
-                    <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star" style="animation-delay: 0.3s;">
-                    MOBILE APP DEVELOPMENT
-                </div>
-                <div class="ticker-item">
-                    <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star" style="animation-delay: 0.6s;">
-                    BACKEND SYSTEMS
-                </div>
-                <div class="ticker-item">
-                    <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star" style="animation-delay: 0.9s;">
-                    DATABASE DESIGN
-                </div>
-                <div class="ticker-item">
-                    <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star" style="animation-delay: 1.2s;">
-                    API DEVELOPMENT
-                </div>
-                <div class="ticker-item">
-                    <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star" style="animation-delay: 1.5s;">
-                    CLOUD SOLUTIONS
-                </div>
-            </div>
-        </div>
+        <!-- Animated Ticker Bar - Now loaded from separate file -->
+        <iframe src="animation.html" class="animation-iframe " frameborder="0" scrolling="no"></iframe>
     </section>
 
     <!-- Video Modal -->
@@ -632,6 +531,33 @@ PROJECTS
                 heroTitle.style.textShadow = 'none';
             });
         }
+
+        // Animation Control Functions - for controlling the external animation
+        function controlTickerAnimation(action, speed = 'normal') {
+            const animationIframe = document.querySelector('.animation-iframe');
+            if (animationIframe && animationIframe.contentWindow && animationIframe.contentWindow.tickerControls) {
+                switch(action) {
+                    case 'pause':
+                        animationIframe.contentWindow.tickerControls.pause();
+                        break;
+                    case 'resume':
+                        animationIframe.contentWindow.tickerControls.resume();
+                        break;
+                    case 'speed':
+                        animationIframe.contentWindow.tickerControls.changeSpeed(speed);
+                        break;
+                }
+            }
+        }
+
+        // Example: Pause animation on page focus change
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                controlTickerAnimation('pause');
+            } else {
+                controlTickerAnimation('resume');
+            }
+        });
 
         // Mobile menu toggle (basic implementation)
         const navbar = document.querySelector('nav');

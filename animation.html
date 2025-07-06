@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticker Animation Component</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Ticker Animation Styles */
+        .ticker-container {
+            background: linear-gradient(90deg, #1dd1a1, #26d0ce, #1dd1a1);
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .ticker-content {
+            display: flex;
+            align-items: center;
+            animation: scrollLeft 40s linear infinite;
+            white-space: nowrap;
+        }
+        
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 60px;
+            color: black;
+            font-weight: 600;
+            font-size: 18px;
+            white-space: nowrap;
+        }
+        
+        .ticker-star {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            display: inline-block;
+        }
+        
+        @keyframes scrollLeft {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @media (max-width: 768px) {
+            .ticker-item {
+                font-size: 16px;
+                margin-right: 40px;
+            }
+            .ticker-star {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+            }
+        }
+        
+        /* Pause animation on hover */
+        .ticker-container:hover .ticker-content {
+            animation-play-state: paused;
+        }
+        
+        /* Enhanced animation variations */
+        .ticker-fast {
+            animation: scrollLeft 30s linear infinite;
+        }
+        
+        .ticker-slow {
+            animation: scrollLeft 50s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Ticker Bar Component -->
+    <div class="ticker-container">
+        <div class="ticker-content">
+            <!-- First set of items -->
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                WEBSITE DEVELOPMENT
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                MOBILE APP DEVELOPMENT
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                BACKEND SYSTEMS
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                DATABASE DESIGN
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                API DEVELOPMENT
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                CLOUD SOLUTIONS
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                UI/UX DESIGN
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                E-COMMERCE SOLUTIONS
+            </div>
+            <!-- Duplicate set for seamless loop -->
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                WEBSITE DEVELOPMENT
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                MOBILE APP DEVELOPMENT
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                BACKEND SYSTEMS
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                DATABASE DESIGN
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                API DEVELOPMENT
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                CLOUD SOLUTIONS
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                UI/UX DESIGN
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                E-COMMERCE SOLUTIONS
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation control functions
+        function pauseAnimation() {
+            const tickerContent = document.querySelector('.ticker-content');
+            tickerContent.style.animationPlayState = 'paused';
+        }
+
+        function resumeAnimation() {
+            const tickerContent = document.querySelector('.ticker-content');
+            tickerContent.style.animationPlayState = 'running';
+        }
+
+        function changeSpeed(speed) {
+            const tickerContent = document.querySelector('.ticker-content');
+            switch(speed) {
+                case 'fast':
+                    tickerContent.style.animation = 'scrollLeft 30s linear infinite';
+                    break;
+                case 'slow':
+                    tickerContent.style.animation = 'scrollLeft 50s linear infinite';
+                    break;
+                default:
+                    tickerContent.style.animation = 'scrollLeft 40s linear infinite';
+            }
+        }
+
+        // Initialize with default speed
+        window.addEventListener('load', function() {
+            console.log('Ticker animation loaded successfully');
+        });
+
+        // Export functions for parent window if used in iframe
+        if (window.parent !== window) {
+            window.parent.tickerControls = {
+                pause: pauseAnimation,
+                resume: resumeAnimation,
+                changeSpeed: changeSpeed
+            };
+        }
+    </script>
+</body>
+</html>
