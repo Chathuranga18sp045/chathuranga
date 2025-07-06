@@ -158,10 +158,19 @@
             border: none;
             width: 100%;
             height: 80px;
-            position: absolute;
+            position: fixed;
             bottom: 0;
             left: 0;
             z-index: 30;
+        }
+        
+        /* Show animation after 100vh for medium screens and above */
+        @media (min-width: 768px) {
+            .animation-iframe {
+                position: absolute;
+                top: 100vh;
+                bottom: auto;
+            }
         }
     </style>
 </head>
@@ -249,7 +258,7 @@
         </div>
 
         <!-- Animated Ticker Bar - Now loaded from separate file -->
-        <iframe src="animation.html" class="animation-iframe " frameborder="0" scrolling="no"></iframe>
+        <iframe src="animation.html" class="animation-iframe" frameborder="0" scrolling="no"></iframe>
     </section>
 
     <!-- Video Modal -->
