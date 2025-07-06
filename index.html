@@ -4,85 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chathuranga Malik - Software Engineer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#1dd1a1',
-                        'primary-light': '#26d0ce',
-                        'primary-dark': '#16a085',
-                        'dark-overlay': '#0a2e2a',
-                        'dark-bg': '#0f2027'
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 1s ease forwards',
-                        'float': 'float 3s ease-in-out infinite',
-                        'typing': 'typing 3s steps(40, end), blink-caret 0.75s step-end infinite',
-                        'float-shape': 'floatShape 20s infinite linear',
-                        'particle-float': 'particleFloat 1s ease-out forwards'
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            'from': { opacity: '0', transform: 'translateY(30px)' },
-                            'to': { opacity: '1', transform: 'translateY(0)' }
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' }
-                        },
-                        typing: {
-                            'from': { width: '0' },
-                            'to': { width: '100%' }
-                        },
-                        'blink-caret': {
-                            'from, to': { borderColor: 'transparent' },
-                            '50%': { borderColor: '#1dd1a1' }
-                        },
-                        floatShape: {
-                            '0%': { transform: 'translateY(0) rotate(0deg)' },
-                            '50%': { transform: 'translateY(-100px) rotate(180deg)' },
-                            '100%': { transform: 'translateY(0) rotate(360deg)' }
-                        },
-                        particleFloat: {
-                            '0%': { opacity: '1', transform: 'translateY(0) scale(1)' },
-                            '100%': { opacity: '0', transform: 'translateY(-50px) scale(0)' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    
+    <!-- Load Common Configuration -->
+    <script src="config.js"></script>
+    
     <style>
-        body { cursor: none; }
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #1dd1a1;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.1s ease;
-        }
-        .cursor-follower {
-            width: 8px;
-            height: 8px;
-            background: #1dd1a1;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.15s ease;
-        }
-        .typewriter {
-            overflow: hidden;
-            border-right: 3px solid #1dd1a1;
-            white-space: nowrap;
-            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
+        /* Page-specific styles */
         .hero-bg {
             background: linear-gradient(to right, rgba(10, 46, 42, 0.9) 0%, rgba(10, 46, 42, 0.7) 30%, rgba(10, 46, 42, 0.3) 50%, transparent 100%), 
                         url('https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/hero-bg.jpg');
@@ -90,32 +17,21 @@
             background-position: center;
             background-attachment: fixed;
         }
+        
         .navbar-transparent {
             background: transparent !important;
             backdrop-filter: none !important;
         }
+        
         .navbar-solid {
             background: linear-gradient(90deg, #16a085, #1dd1a1) !important;
             backdrop-filter: blur(10px) !important;
         }
-        .btn-gradient {
-            background: linear-gradient(135deg, #1dd1a1, #26d0ce);
-            transition: all 0.3s ease;
-        }
-        .btn-gradient:hover {
-            background: linear-gradient(135deg, #26d0ce, #1dd1a1);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(29, 209, 161, 0.3);
-        }
+        
         .logo-gradient {
             background: linear-gradient(135deg, #1dd1a1, #26d0ce);
         }
-        .text-gradient {
-            background: linear-gradient(135deg, #1dd1a1, #26d0ce);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+        
         .play-btn {
             width: 60px;
             height: 60px;
@@ -128,6 +44,7 @@
             transition: all 0.3s ease;
             position: relative;
         }
+        
         .play-btn::before {
             content: '';
             width: 0;
@@ -137,16 +54,16 @@
             border-bottom: 8px solid transparent;
             margin-left: 3px;
         }
+        
         .play-btn:hover {
             background: rgba(29, 209, 161, 0.2);
             transform: scale(1.1);
         }
+        
         .shape-gradient {
             background: rgba(29, 209, 161, 0.1);
         }
-        .particle-gradient {
-            background: #1dd1a1;
-        }
+        
         .hero-content {
             min-height: 100vh;
             display: flex;
@@ -172,13 +89,17 @@
                 bottom: auto;
             }
         }
+        
+        /* About section iframe styling */
+        .about-iframe {
+            border: none;
+            width: 100%;
+            min-height: 100vh;
+            height: auto;
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 w-full px-8 md:px-12 py-4 flex justify-between items-center z-50 transition-all duration-300 navbar-transparent">
         <div class="flex items-center gap-3">
@@ -249,16 +170,21 @@
                         Get Started
                     </a>
                     
-                    <button id="watchIntroBtn" class="flex items-center gap-4 text-white font-semibold hover:text-primary transition-colors duration-300">
+                    <button id="watchIntroBtn" class="flex items-center gap-4 text-white font-semibold hover:text-primary transition-colors duration-300 hover-cursor">
                         <div class="play-btn"></div>
                         Watch Intro
                     </button>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Animated Ticker Bar - Now loaded from separate file -->
-        <iframe src="animation.html" class="animation-iframe" frameborder="0" scrolling="no"></iframe>
+    <!-- Animated Ticker Bar -->
+    <iframe src="animation.html" class="animation-iframe" frameborder="0" scrolling="no"></iframe>
+    
+    <!-- About Us Section -->
+    <section id="about" class="relative">
+        <iframe src="about.html" class="about-iframe" frameborder="0" scrolling="no"></iframe>
     </section>
 
     <!-- Video Modal -->
@@ -302,71 +228,17 @@
     </div>
 
     <script>
-        // Custom Cursor Animation
-        const cursor = document.querySelector('.cursor');
-        const cursorFollower = document.querySelector('.cursor-follower');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
+        // Page-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup navbar scroll effect
+            PortfolioConfig.setupNavbarScroll();
             
-            setTimeout(() => {
-                cursorFollower.style.left = e.clientX + 'px';
-                cursorFollower.style.top = e.clientY + 'px';
-            }, 100);
-        });
+            // Setup parallax effect
+            PortfolioConfig.setupParallax('#home', 0.5);
 
-        // Cursor hover effects
-        const hoverElements = document.querySelectorAll('a, button');
-        
-        hoverElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(1.5)';
-                cursor.style.borderColor = '#ffffff';
-                cursorFollower.style.transform = 'scale(1.5)';
-                cursorFollower.style.background = '#ffffff';
-            });
-            
-            element.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-                cursor.style.borderColor = '#1dd1a1';
-                cursorFollower.style.transform = 'scale(1)';
-                cursorFollower.style.background = '#1dd1a1';
-            });
-        });
-
-        // Navbar scroll effect - transparent until 100vh
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            const scrollPosition = window.scrollY;
-            const viewportHeight = window.innerHeight;
-            
-            if (scrollPosition >= viewportHeight) {
-                navbar.classList.remove('navbar-transparent');
-                navbar.classList.add('navbar-solid');
-            } else {
-                navbar.classList.remove('navbar-solid');
-                navbar.classList.add('navbar-transparent');
-            }
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // CV Download Function
-        document.getElementById('downloadCV').addEventListener('click', function() {
-            const cvContent = `
+            // CV Download Function
+            document.getElementById('downloadCV').addEventListener('click', function() {
+                const cvContent = `
 CHATHURANGA MALIK
 Software Engineer
 
@@ -402,180 +274,142 @@ PROJECTS
 • Project 1: Description of significant project
 • Project 2: Description of another important project
 • Project 3: Portfolio website with modern animations and interactions
-            `;
-
-            const blob = new Blob([cvContent], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Chathuranga_Malik_CV.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-            
-            // Show custom thank you modal
-            showAlertModal();
-        });
-
-        // Alert Modal Functions
-        function showAlertModal() {
-            const alertModal = document.getElementById('alertModal');
-            alertModal.classList.remove('hidden');
-            alertModal.classList.add('flex');
-        }
-
-        function closeAlertModal() {
-            const alertModal = document.getElementById('alertModal');
-            alertModal.classList.add('hidden');
-            alertModal.classList.remove('flex');
-        }
-
-        // Alert Modal Event Listeners
-        document.getElementById('closeAlertModal').addEventListener('click', closeAlertModal);
-        
-        document.getElementById('alertModal').addEventListener('click', (e) => {
-            if (e.target.id === 'alertModal') {
-                closeAlertModal();
-            }
-        });
-
-        // Video Modal Functionality
-        const watchIntroBtn = document.getElementById('watchIntroBtn');
-        const videoModal = document.getElementById('videoModal');
-        const closeModal = document.getElementById('closeModal');
-        const videoIframe = document.getElementById('videoIframe');
-
-        // Sample YouTube video - you can replace with your own intro video
-        const videoUrl = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
-
-        watchIntroBtn.addEventListener('click', () => {
-            videoIframe.src = videoUrl;
-            videoModal.classList.remove('hidden');
-            videoModal.classList.add('flex');
-        });
-
-        closeModal.addEventListener('click', closeVideoModal);
-        
-        videoModal.addEventListener('click', (e) => {
-            if (e.target === videoModal) {
-                closeVideoModal();
-            }
-        });
-
-        function closeVideoModal() {
-            videoModal.classList.add('hidden');
-            videoModal.classList.remove('flex');
-            videoIframe.src = '';
-        }
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeVideoModal();
-            }
-        });
-
-        // Parallax effect for background
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('#home');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-
-        // Dynamic typewriter effect
-        function typeWriter() {
-            const titleElement = document.querySelector('.typewriter');
-            if (titleElement) {
-                titleElement.style.width = '0';
-                setTimeout(() => {
-                    titleElement.style.width = '100%';
-                }, 500);
-            }
-        }
-
-        // Initialize typewriter on page load
-        window.addEventListener('load', () => {
-            setTimeout(typeWriter, 1000);
-        });
-
-        // Particle effect on button hover
-        document.querySelectorAll('a[href="#contact"]').forEach(btn => {
-            btn.addEventListener('mouseenter', function(e) {
-                const rect = this.getBoundingClientRect();
-                for (let i = 0; i < 10; i++) {
-                    createParticle(rect.left + rect.width/2, rect.top + rect.height/2);
-                }
-            });
-        });
-
-        function createParticle(x, y) {
-            const particle = document.createElement('div');
-            particle.className = 'fixed w-1 h-1 particle-gradient rounded-full pointer-events-none z-50';
-            particle.style.left = x + 'px';
-            particle.style.top = y + 'px';
-            particle.style.animation = 'particle-float 1s ease-out forwards';
-            
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 1000);
-        }
-
-        // Add glitch effect on hover for title
-        const heroTitle = document.querySelector('h1');
-        if (heroTitle) {
-            heroTitle.addEventListener('mouseenter', () => {
-                heroTitle.style.textShadow = `
-                    2px 0 #ff0000,
-                    -2px 0 #00ff00,
-                    0 2px #0000ff
                 `;
+
+                const blob = new Blob([cvContent], { type: 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Chathuranga_Malik_CV.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+                
+                // Show custom thank you modal
+                showAlertModal();
             });
 
-            heroTitle.addEventListener('mouseleave', () => {
-                heroTitle.style.textShadow = 'none';
-            });
-        }
+            // Alert Modal Functions
+            function showAlertModal() {
+                const alertModal = document.getElementById('alertModal');
+                alertModal.classList.remove('hidden');
+                alertModal.classList.add('flex');
+            }
 
-        // Animation Control Functions - for controlling the external animation
-        function controlTickerAnimation(action, speed = 'normal') {
-            const animationIframe = document.querySelector('.animation-iframe');
-            if (animationIframe && animationIframe.contentWindow && animationIframe.contentWindow.tickerControls) {
-                switch(action) {
-                    case 'pause':
-                        animationIframe.contentWindow.tickerControls.pause();
-                        break;
-                    case 'resume':
-                        animationIframe.contentWindow.tickerControls.resume();
-                        break;
-                    case 'speed':
-                        animationIframe.contentWindow.tickerControls.changeSpeed(speed);
-                        break;
+            function closeAlertModal() {
+                const alertModal = document.getElementById('alertModal');
+                alertModal.classList.add('hidden');
+                alertModal.classList.remove('flex');
+            }
+
+            // Alert Modal Event Listeners
+            document.getElementById('closeAlertModal').addEventListener('click', closeAlertModal);
+            
+            document.getElementById('alertModal').addEventListener('click', (e) => {
+                if (e.target.id === 'alertModal') {
+                    closeAlertModal();
+                }
+            });
+
+            // Video Modal Functionality
+            const watchIntroBtn = document.getElementById('watchIntroBtn');
+            const videoModal = document.getElementById('videoModal');
+            const closeModal = document.getElementById('closeModal');
+            const videoIframe = document.getElementById('videoIframe');
+
+            // Sample YouTube video - you can replace with your own intro video
+            const videoUrl = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
+
+            watchIntroBtn.addEventListener('click', () => {
+                videoIframe.src = videoUrl;
+                videoModal.classList.remove('hidden');
+                videoModal.classList.add('flex');
+            });
+
+            closeModal.addEventListener('click', closeVideoModal);
+            
+            videoModal.addEventListener('click', (e) => {
+                if (e.target === videoModal) {
+                    closeVideoModal();
+                }
+            });
+
+            function closeVideoModal() {
+                videoModal.classList.add('hidden');
+                videoModal.classList.remove('flex');
+                videoIframe.src = '';
+            }
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeVideoModal();
+                }
+            });
+
+            // Dynamic typewriter effect
+            function typeWriter() {
+                const titleElement = document.querySelector('.typewriter');
+                if (titleElement) {
+                    titleElement.style.width = '0';
+                    setTimeout(() => {
+                        titleElement.style.width = '100%';
+                    }, 500);
                 }
             }
-        }
 
-        // Example: Pause animation on page focus change
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                controlTickerAnimation('pause');
-            } else {
-                controlTickerAnimation('resume');
+            // Initialize typewriter
+            setTimeout(typeWriter, 1000);
+
+            // Particle effect on button hover
+            document.querySelectorAll('a[href="#contact"]').forEach(btn => {
+                btn.addEventListener('mouseenter', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    for (let i = 0; i < 10; i++) {
+                        PortfolioConfig.createParticle(rect.left + rect.width/2, rect.top + rect.height/2);
+                    }
+                });
+            });
+
+            // Add glitch effect on hover for title
+            const heroTitle = document.querySelector('h1');
+            if (heroTitle) {
+                heroTitle.addEventListener('mouseenter', () => {
+                    heroTitle.style.textShadow = `
+                        2px 0 #ff0000,
+                        -2px 0 #00ff00,
+                        0 2px #0000ff
+                    `;
+                });
+
+                heroTitle.addEventListener('mouseleave', () => {
+                    heroTitle.style.textShadow = 'none';
+                });
             }
-        });
 
-        // Mobile menu toggle (basic implementation)
-        const navbar = document.querySelector('nav');
-        if (navbar && window.innerWidth <= 768) {
-            const mobileMenuBtn = document.createElement('button');
-            mobileMenuBtn.innerHTML = '☰';
-            mobileMenuBtn.className = 'md:hidden text-white text-2xl';
-            navbar.appendChild(mobileMenuBtn);
-        }
+            // Make showAlertModal available to iframe components
+            window.showAlertModal = showAlertModal;
+
+            // Handle iframe height adjustment
+            function adjustIframeHeight() {
+                const aboutIframe = document.querySelector('.about-iframe');
+                if (aboutIframe) {
+                    aboutIframe.onload = function() {
+                        try {
+                            const iframeDoc = aboutIframe.contentDocument || aboutIframe.contentWindow.document;
+                            const height = iframeDoc.body.scrollHeight;
+                            aboutIframe.style.height = height + 'px';
+                        } catch (e) {
+                            // Fallback for cross-origin restrictions
+                            aboutIframe.style.height = '100vh';
+                        }
+                    };
+                }
+            }
+
+            adjustIframeHeight();
+        });
     </script>
 </body>
 </html>

@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticker Animation Component</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Common Configuration -->
+    <script src="config.js"></script>
+    
     <style>
         /* Ticker Animation Styles */
         .ticker-container {
@@ -45,11 +48,6 @@
         @keyframes scrollLeft {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-100%); }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
         }
         
         @media (max-width: 768px) {
@@ -156,31 +154,49 @@
         // Animation control functions
         function pauseAnimation() {
             const tickerContent = document.querySelector('.ticker-content');
-            tickerContent.style.animationPlayState = 'paused';
+            if (tickerContent) {
+                tickerContent.style.animationPlayState = 'paused';
+            }
         }
 
         function resumeAnimation() {
             const tickerContent = document.querySelector('.ticker-content');
-            tickerContent.style.animationPlayState = 'running';
+            if (tickerContent) {
+                tickerContent.style.animationPlayState = 'running';
+            }
         }
 
         function changeSpeed(speed) {
             const tickerContent = document.querySelector('.ticker-content');
-            switch(speed) {
-                case 'fast':
-                    tickerContent.style.animation = 'scrollLeft 30s linear infinite';
-                    break;
-                case 'slow':
-                    tickerContent.style.animation = 'scrollLeft 50s linear infinite';
-                    break;
-                default:
-                    tickerContent.style.animation = 'scrollLeft 40s linear infinite';
+            if (tickerContent) {
+                switch(speed) {
+                    case 'fast':
+                        tickerContent.style.animation = 'scrollLeft 30s linear infinite';
+                        break;
+                    case 'slow':
+                        tickerContent.style.animation = 'scrollLeft 50s linear infinite';
+                        break;
+                    default:
+                        tickerContent.style.animation = 'scrollLeft 40s linear infinite';
+                }
             }
         }
 
         // Initialize with default speed
-        window.addEventListener('load', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             console.log('Ticker animation loaded successfully');
+            
+            // Add hover effect to ticker items
+            document.querySelectorAll('.ticker-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
         });
 
         // Export functions for parent window if used in iframe
@@ -191,6 +207,13 @@
                 changeSpeed: changeSpeed
             };
         }
+
+        // Make functions available globally
+        window.tickerControls = {
+            pause: pauseAnimation,
+            resume: resumeAnimation,
+            changeSpeed: changeSpeed
+        };
     </script>
 </body>
 </html>
