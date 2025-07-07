@@ -75,8 +75,18 @@
             border: none;
             width: 100%;
             height: 80px;
-            position: relative;
+            bottom: 0;
+            left: 0;
             z-index: 30;
+        }
+        
+        /* Show animation after 100vh for medium screens and above */
+        @media (min-width: 768px) {
+            .animation-iframe {
+                position: absolute;
+                top: 100vh;
+                bottom: auto;
+            }
         }
         
         /* About section iframe styling */
@@ -137,7 +147,7 @@
 
         <div class="hero-content px-8 md:px-12 relative z-20">
             <div class="max-w-3xl text-white">
-                <div class="flex items-center text-primary font-semibold mb-5 opacity-0 transform translate-y-8 animate-fade-in-up mt-16 sm:mt-36" style="animation-delay: 0.2s;">
+                <div class="flex items-center text-primary font-semibold mb-5 opacity-0 transform translate-y-8 animate-fade-in-up mt-16 sm:mt-48" style="animation-delay: 0.2s;">
                     <div class="w-2.5 h-2.5 bg-primary rounded-full mr-4"></div>
                     Your Vision, My Code Expertise
                 </div>
@@ -168,16 +178,11 @@
         </div>
     </section>
 
-    <!-- Animated Ticker Bar (shown just after hero on all screen sizes) -->
-    <section id="services-ticker" class="relative z-30 -mb-12">
-        <iframe 
-            src="animation.html"
-            class="animation-iframe !relative w-full h-20 "
-            frameborder="0"
-            scrolling="no">
-        </iframe>
-    </section>
-    
+    <!-- Animated Ticker Bar -->
+    <section id="services-ticker" class="relative -mb-12 sm:mb-0">
+        <iframe src="animation.html" class="animation-iframe" frameborder="0" scrolling="no"></iframe>
+    </section> 
+       
     <!-- About Us Section -->
     <section id="about" class="relative">
         <iframe src="about.html" class="about-iframe" frameborder="0" scrolling="no"></iframe>
