@@ -4,12 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chathuranga Malik - Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Load Common Configuration -->
     <script src="config.js"></script>
     
+    <script>
+        // Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#1dd1a1',
+                        'primary-light': '#26d0ce',
+                        'primary-dark': '#16a085',
+                        'dark-overlay': '#0a2e2a',
+                        'dark-bg': '#0f2027',
+                        'about-bg': '#1a3332'
+                    },
+                    animation: {
+                        'float-shape': 'floatShape 20s infinite linear',
+                        'fade-in-up': 'fadeInUp 0.8s ease forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        floatShape: {
+                            '0%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-100px) rotate(180deg)' },
+                            '100%': { transform: 'translateY(0) rotate(360deg)' }
+                        },
+                        fadeInUp: {
+                            'from': { opacity: '0', transform: 'translateY(30px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': 'linear-gradient(to right, rgba(10, 46, 42, 0.9) 0%, rgba(10, 46, 42, 0.7) 30%, rgba(10, 46, 42, 0.3) 50%, transparent 100%), url("https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/hero-bg.jpg")',
+                        'logo-gradient': 'linear-gradient(135deg, #1dd1a1, #26d0ce)',
+                        'btn-gradient': 'linear-gradient(135deg, #1dd1a1, #26d0ce)',
+                        'navbar-solid': 'linear-gradient(90deg, #16a085, #1dd1a1)',
+                        'text-gradient': 'linear-gradient(135deg, #1dd1a1, #26d0ce)'
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
-        /* Page-specific styles */
+        /* Custom CSS that cannot be replicated with Tailwind */
         .hero-bg {
             background: linear-gradient(to right, rgba(10, 46, 42, 0.9) 0%, rgba(10, 46, 42, 0.7) 30%, rgba(10, 46, 42, 0.3) 50%, transparent 100%), 
                         url('https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/hero-bg.jpg');
@@ -28,23 +74,6 @@
             backdrop-filter: blur(10px) !important;
         }
         
-        .logo-gradient {
-            background: linear-gradient(135deg, #1dd1a1, #26d0ce);
-        }
-        
-        .play-btn {
-            width: 60px;
-            height: 60px;
-            border: 2px solid #1dd1a1;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(29, 209, 161, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
         .play-btn::before {
             content: '';
             width: 0;
@@ -55,35 +84,39 @@
             margin-left: 3px;
         }
         
-        .play-btn:hover {
-            background: rgba(29, 209, 161, 0.2);
-            transform: scale(1.1);
+        .text-gradient {
+            background: linear-gradient(135deg, #1dd1a1, #26d0ce);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .shape-gradient {
-            background: rgba(29, 209, 161, 0.1);
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #1dd1a1;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
         }
         
-        .hero-content {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
         }
         
-        /* Animation iframe styling */
-        .animation-iframe {
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #1dd1a1 }
+        }
+        
+        /* Iframe auto-height - This allows iframes to size naturally */
+        .about-iframe, .footer-iframe {
             border: none;
             width: 100%;
-            height: 80px;
-            position: relative;
-            z-index: 30;
+            display: block;
         }
         
-        /* About section iframe styling */
-        .about-iframe {
-            border: none;
-            width: 100%;
-            min-height: 100vh;
+        /* Remove min-height constraints to allow natural sizing */
+        #about, #footer {
             height: auto;
         }
     </style>
@@ -92,7 +125,7 @@
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 w-full px-8 md:px-12 py-4 flex justify-between items-center z-50 transition-all duration-300 navbar-transparent">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 logo-gradient rounded-full flex items-center justify-center text-white font-bold text-sm">
+            <div class="w-10 h-10 bg-gradient-to-r from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-sm">
                 CM
             </div>
             <span class="text-xl font-bold text-white">Chathuranga.</span>
@@ -121,7 +154,7 @@
             </a></li>
         </ul>
         
-        <button id="downloadCV" class="btn-gradient text-white px-5 py-2.5 md:px-6 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300">
+        <button id="downloadCV" class="bg-gradient-to-r from-primary to-primary-light text-white px-5 py-2.5 md:px-6 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl">
             Download CV
         </button>
     </nav>
@@ -130,12 +163,12 @@
     <section id="home" class="min-h-screen hero-bg relative">
         <!-- Background Shapes -->
         <div class="absolute inset-0 overflow-hidden z-10">
-            <div class="absolute w-16 h-16 md:w-20 md:h-20 top-1/5 left-1/10 rounded-full shape-gradient animate-float-shape"></div>
-            <div class="absolute w-24 h-24 md:w-30 md:h-30 top-3/5 left-4/5 rounded-full shape-gradient animate-float-shape" style="animation-delay: 5s;"></div>
-            <div class="absolute w-12 h-12 md:w-15 md:h-15 top-4/5 left-1/5 rounded-full shape-gradient animate-float-shape" style="animation-delay: 10s;"></div>
+            <div class="absolute w-16 h-16 md:w-20 md:h-20 top-1/5 left-1/10 rounded-full bg-primary bg-opacity-10 animate-float-shape"></div>
+            <div class="absolute w-24 h-24 md:w-30 md:h-30 top-3/5 left-4/5 rounded-full bg-primary bg-opacity-10 animate-float-shape" style="animation-delay: 5s;"></div>
+            <div class="absolute w-12 h-12 md:w-15 md:h-15 top-4/5 left-1/5 rounded-full bg-primary bg-opacity-10 animate-float-shape" style="animation-delay: 10s;"></div>
         </div>
 
-        <div class="hero-content px-8 md:px-12 relative z-20">
+        <div class="min-h-screen flex items-center px-8 md:px-12 relative z-20">
             <div class="max-w-3xl text-white">
                 <div class="flex items-center text-primary font-semibold mb-5 opacity-0 transform translate-y-8 animate-fade-in-up mt-16 sm:mt-36" style="animation-delay: 0.2s;">
                     <div class="w-2.5 h-2.5 bg-primary rounded-full mr-4"></div>
@@ -150,17 +183,17 @@
                 
                 <p class="text-base md:text-md lg:text-lg leading-relaxed mb-8 md:mb-10 text-gray-300 opacity-0 transform translate-y-8 animate-fade-in-up max-w-2xl" style="animation-delay: 0.6s;">
                     Hi, I'm Chathuranga Malik, a passionate Software Engineer based in Sri Lanka. I specialize in 
-                    crafting robust, scalable applications that merge functionality with 
-                    exceptional user experiences. With 2+ years of focused development experience.
+                    crafting robust, scalable Laravel applications with Vue.js frontends using Inertia.js and Livewire. 
+                    With 2+ years of focused Laravel development experience.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-5 items-start sm:items-center opacity-0 transform translate-y-8 animate-fade-in-up" style="animation-delay: 0.8s;">
-                    <a href="#contact" class="btn-gradient text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold hover:transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-float inline-block text-center">
+                    <a href="#contact" class="bg-gradient-to-r from-primary to-primary-light text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold hover:transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-float inline-block text-center">
                         Get Started
                     </a>
                     
-                    <button id="watchIntroBtn" class="flex items-center gap-4 text-white font-semibold hover:text-primary transition-colors duration-300 hover-cursor">
-                        <div class="play-btn"></div>
+                    <button id="watchIntroBtn" class="flex items-center gap-4 text-white font-semibold hover:text-primary transition-colors duration-300 cursor-pointer">
+                        <div class="play-btn w-15 h-15 border-2 border-primary rounded-full flex items-center justify-center bg-primary bg-opacity-10 transition-all duration-300 relative hover:bg-opacity-20 hover:scale-110"></div>
                         Watch Intro
                     </button>
                 </div>
@@ -168,23 +201,40 @@
         </div>
     </section>
 
-    <!-- Animated Ticker Bar (shown just after hero on all screen sizes) -->
+    <!-- Animated Ticker Bar -->
     <section id="services-ticker" class="relative z-30 -mb-12">
         <iframe 
             src="animation.html"
-            class="animation-iframe !relative w-full h-20 "
+            class="border-none w-full h-20 relative"
             frameborder="0"
             scrolling="no">
         </iframe>
     </section>
     
-    <!-- About Us Section -->
+    <!-- About Us Section - Auto Height -->
     <section id="about" class="relative">
-        <iframe src="about.html" class="about-iframe" frameborder="0" scrolling="no"></iframe>
+        <iframe 
+            src="about.html" 
+            class="about-iframe" 
+            frameborder="0" 
+            scrolling="no"
+            onload="autoResizeIframe(this)">
+        </iframe>
+    </section>
+
+    <!-- Footer Section - Auto Height -->
+    <section id="footer" class="relative">
+        <iframe 
+            src="footer.html" 
+            class="footer-iframe" 
+            frameborder="0" 
+            scrolling="no"
+            onload="autoResizeIframe(this)">
+        </iframe>
     </section>
 
     <!-- Video Modal -->
-    <div id="videoModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 px-4">
+    <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50 px-4">
         <div class="bg-white rounded-lg p-4 md:p-6 max-w-4xl w-full relative">
             <button id="closeModal" class="absolute top-2 right-2 md:top-4 md:right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold z-10">
                 ×
@@ -196,7 +246,7 @@
     </div>
 
     <!-- Custom Alert Modal -->
-    <div id="alertModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 px-4">
+    <div id="alertModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 px-4">
         <div class="bg-white rounded-2xl p-6 md:p-8 max-w-md w-full relative shadow-2xl transform transition-all">
             <div class="text-center">
                 <!-- Success Icon -->
@@ -216,7 +266,7 @@
                 </p>
                 
                 <!-- Close Button -->
-                <button id="closeAlertModal" class="btn-gradient text-white px-8 py-3 rounded-full font-semibold hover:transform hover:-translate-y-1 transition-all duration-300 w-full">
+                <button id="closeAlertModal" class="bg-gradient-to-r from-primary to-primary-light text-white px-8 py-3 rounded-full font-semibold hover:transform hover:-translate-y-1 transition-all duration-300 w-full">
                     Close
                 </button>
             </div>
@@ -224,59 +274,130 @@
     </div>
 
     <script>
+        // Auto-resize iframe to match content height
+        function autoResizeIframe(iframe) {
+            // Set initial height
+            iframe.style.height = '600px';
+            
+            setTimeout(() => {
+                try {
+                    // Try to get the actual content height
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    if (iframeDoc && iframeDoc.body) {
+                        const height = Math.max(
+                            iframeDoc.body.scrollHeight,
+                            iframeDoc.body.offsetHeight,
+                            iframeDoc.documentElement.scrollHeight,
+                            iframeDoc.documentElement.offsetHeight
+                        );
+                        
+                        if (height > 0) {
+                            iframe.style.height = height + 'px';
+                            console.log(`Iframe resized to: ${height}px`);
+                        }
+                    }
+                } catch (e) {
+                    // Cross-origin fallback - set reasonable heights
+                    if (iframe.classList.contains('about-iframe')) {
+                        iframe.style.height = '1200px'; // Generous height for about section
+                    } else if (iframe.classList.contains('footer-iframe')) {
+                        iframe.style.height = '600px'; // Generous height for footer
+                    }
+                    console.log('Cross-origin restriction - using fallback height');
+                }
+            }, 200);
+            
+            // Additional resize after a longer delay to catch late-loading content
+            setTimeout(() => {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    if (iframeDoc && iframeDoc.body) {
+                        const height = Math.max(
+                            iframeDoc.body.scrollHeight,
+                            iframeDoc.documentElement.scrollHeight
+                        );
+                        if (height > parseInt(iframe.style.height)) {
+                            iframe.style.height = height + 'px';
+                            console.log(`Iframe re-resized to: ${height}px`);
+                        }
+                    }
+                } catch (e) {
+                    // Silent fail for cross-origin
+                }
+            }, 1000);
+        }
+
         // Page-specific JavaScript
         document.addEventListener('DOMContentLoaded', function() {
             // Setup navbar scroll effect
-            PortfolioConfig.setupNavbarScroll();
-            
-            // Setup parallax effect
-            PortfolioConfig.setupParallax('#home', 0.5);
+            if (typeof PortfolioConfig !== 'undefined') {
+                PortfolioConfig.setupNavbarScroll();
+                PortfolioConfig.setupParallax('#home', 0.5);
+            }
 
-            // CV Download Function
+            // CV Download Function - Updated with real contact info
             document.getElementById('downloadCV').addEventListener('click', function() {
                 const cvContent = `
 CHATHURANGA MALIK
-Software Engineer
+Software Engineer - Laravel Specialist
 
 Contact Information:
-📧 Email: chathuranga.malik@email.com
-📱 Phone: +94 XX XXX XXXX
+📧 Email: chathurangamalik1997@gmail.com
+📱 Phone: +94763241451
+📱 WhatsApp: +94763241451
 🌍 Location: Sri Lanka
-💼 LinkedIn: linkedin.com/in/chathuranga-malik
-🐙 GitHub: github.com/chathuranga-malik
+💼 LinkedIn: www.linkedin.com/in/chathuranga-malik-b61295201
+🐙 GitHub: https://github.com/Chathuranga18sp045
+📘 Facebook: https://www.facebook.com/chathuranga.malik/
 
 PROFESSIONAL SUMMARY
-Passionate Software Engineer with 2+ years of experience in developing robust, scalable applications. 
-Specialized in modern web technologies and committed to delivering exceptional user experiences.
+Passionate Software Engineer with 2+ years of experience in Laravel development. 
+Specialized in building robust, scalable web applications using Laravel framework with Vue.js, 
+Inertia.js, and Livewire. Committed to delivering exceptional user experiences and clean code.
 
 TECHNICAL SKILLS
-• Programming Languages: JavaScript, Python, Java, TypeScript
-• Frontend: React, Vue.js, HTML5, CSS3, Tailwind CSS
-• Backend: Node.js, Express.js, Python Flask/Django
-• Databases: MongoDB, MySQL, PostgreSQL
-• Tools & Technologies: Git, Docker, AWS, Firebase
+• Backend Framework: Laravel (PHP) - 2+ years
+• Frontend: Vue.js, Inertia.js, Livewire, HTML5, CSS3, Tailwind CSS
+• Programming Languages: PHP, JavaScript, TypeScript
+• Database: MySQL, PostgreSQL, MongoDB
+• API Development: REST APIs, Laravel Sanctum, Passport
+• Tools & Technologies: Git, Docker, Composer, NPM, AWS
+• Testing: PHPUnit, Laravel Dusk
+
+CORE EXPERTISE
+• Laravel Framework Development
+• Vue.js with Inertia.js Integration
+• Livewire for Dynamic Components
+• RESTful API Development
+• Database Design & Optimization
+• Authentication & Authorization
+• Payment Gateway Integration
+• Real-time Applications
 
 EXPERIENCE
-Software Engineer | Company Name | 2023 - Present
-• Developed and maintained web applications using modern frameworks
-• Collaborated with cross-functional teams to deliver high-quality software solutions
-• Implemented responsive designs and optimized application performance
+Laravel Developer | Company Name | 2023 - Present
+• Developed and maintained Laravel applications with Vue.js frontends
+• Implemented Inertia.js for seamless SPA experiences
+• Built dynamic components using Livewire
+• Created secure REST APIs with Laravel Sanctum
+• Optimized database queries and application performance
 
 EDUCATION
 Bachelor's Degree in Computer Science/Software Engineering
 University Name | Year
 
 PROJECTS
-• Project 1: Description of significant project
-• Project 2: Description of another important project
-• Project 3: Portfolio website with modern animations and interactions
+• E-commerce Platform: Laravel + Vue.js + Inertia.js
+• CRM System: Laravel + Livewire + Tailwind CSS
+• API-driven Mobile App Backend: Laravel + REST API
+• Real-time Chat Application: Laravel + WebSockets
                 `;
 
                 const blob = new Blob([cvContent], { type: 'text/plain' });
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'Chathuranga_Malik_CV.txt';
+                a.download = 'Chathuranga_Malik_Laravel_Developer_CV.txt';
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -363,7 +484,9 @@ PROJECTS
                 btn.addEventListener('mouseenter', function(e) {
                     const rect = this.getBoundingClientRect();
                     for (let i = 0; i < 10; i++) {
-                        PortfolioConfig.createParticle(rect.left + rect.width/2, rect.top + rect.height/2);
+                        if (typeof PortfolioConfig !== 'undefined') {
+                            PortfolioConfig.createParticle(rect.left + rect.width/2, rect.top + rect.height/2);
+                        }
                     }
                 });
             });
@@ -387,25 +510,18 @@ PROJECTS
             // Make showAlertModal available to iframe components
             window.showAlertModal = showAlertModal;
 
-            // Handle iframe height adjustment
-            function adjustIframeHeight() {
+            // Window resize handler for iframes
+            window.addEventListener('resize', () => {
                 const aboutIframe = document.querySelector('.about-iframe');
-                if (aboutIframe) {
-                    aboutIframe.onload = function() {
-                        try {
-                            const iframeDoc = aboutIframe.contentDocument || aboutIframe.contentWindow.document;
-                            const height = iframeDoc.body.scrollHeight;
-                            aboutIframe.style.height = height + 'px';
-                        } catch (e) {
-                            // Fallback for cross-origin restrictions
-                            aboutIframe.style.height = '100vh';
-                        }
-                    };
-                }
-            }
-
-            adjustIframeHeight();
+                const footerIframe = document.querySelector('.footer-iframe');
+                
+                if (aboutIframe) autoResizeIframe(aboutIframe);
+                if (footerIframe) autoResizeIframe(footerIframe);
+            });
         });
+
+        // Global function to be called from iframe onload
+        window.autoResizeIframe = autoResizeIframe;
     </script>
 </body>
 </html>
