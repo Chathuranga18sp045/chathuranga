@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticker Animation Component</title>
     
-    <!-- Load Common Configuration -->
-    <script src="config.js"></script>
-    
     <style>
         /* Ticker Animation Styles */
         .ticker-container {
@@ -75,6 +72,13 @@
         .ticker-slow {
             animation: scrollLeft 50s linear infinite;
         }
+
+        /* Basic styles without WhatsApp components */
+        body { 
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -84,15 +88,23 @@
             <!-- First set of items -->
             <div class="ticker-item">
                 <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                WEBSITE DEVELOPMENT
+                LARAVEL DEVELOPMENT
             </div>
             <div class="ticker-item">
                 <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                MOBILE APP DEVELOPMENT
+                VUE.JS APPLICATIONS
             </div>
             <div class="ticker-item">
                 <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                BACKEND SYSTEMS
+                INERTIA.JS INTEGRATION
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                LIVEWIRE COMPONENTS
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                REST API DEVELOPMENT
             </div>
             <div class="ticker-item">
                 <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
@@ -100,32 +112,32 @@
             </div>
             <div class="ticker-item">
                 <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                API DEVELOPMENT
+                FULL-STACK SOLUTIONS
             </div>
             <div class="ticker-item">
                 <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                CLOUD SOLUTIONS
-            </div>
-            <div class="ticker-item">
-                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                UI/UX DESIGN
-            </div>
-            <div class="ticker-item">
-                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                E-COMMERCE SOLUTIONS
+                E-COMMERCE PLATFORMS
             </div>
             <!-- Duplicate set for seamless loop -->
             <div class="ticker-item">
                 <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                WEBSITE DEVELOPMENT
+                LARAVEL DEVELOPMENT
             </div>
             <div class="ticker-item">
                 <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                MOBILE APP DEVELOPMENT
+                VUE.JS APPLICATIONS
             </div>
             <div class="ticker-item">
                 <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                BACKEND SYSTEMS
+                INERTIA.JS INTEGRATION
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                LIVEWIRE COMPONENTS
+            </div>
+            <div class="ticker-item">
+                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
+                REST API DEVELOPMENT
             </div>
             <div class="ticker-item">
                 <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
@@ -133,24 +145,18 @@
             </div>
             <div class="ticker-item">
                 <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                API DEVELOPMENT
+                FULL-STACK SOLUTIONS
             </div>
             <div class="ticker-item">
                 <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                CLOUD SOLUTIONS
-            </div>
-            <div class="ticker-item">
-                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                UI/UX DESIGN
-            </div>
-            <div class="ticker-item">
-                <img src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/star-icon.svg" alt="star" class="ticker-star">
-                E-COMMERCE SOLUTIONS
+                E-COMMERCE PLATFORMS
             </div>
         </div>
     </div>
 
     <script>
+        // Only load basic functionality, no config.js to avoid duplicate WhatsApp
+        
         // Animation control functions
         function pauseAnimation() {
             const tickerContent = document.querySelector('.ticker-content');
@@ -184,7 +190,7 @@
 
         // Initialize with default speed
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Ticker animation loaded successfully');
+            console.log('Ticker animation loaded successfully (iframe mode)');
             
             // Add hover effect to ticker items
             document.querySelectorAll('.ticker-item').forEach(item => {
