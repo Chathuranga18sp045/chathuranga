@@ -151,6 +151,66 @@ class PortfolioConfig {
                 margin: 0;
                 padding: 0;
             }
+
+            /* Custom Theme Scrollbars - Global */
+            ::-webkit-scrollbar {
+                width: 8px;
+                height: 8px;
+            }
+
+            ::-webkit-scrollbar-track {
+                background: rgba(29, 209, 161, 0.1);
+                border-radius: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: linear-gradient(135deg, #1dd1a1, #26d0ce);
+                border-radius: 10px;
+                transition: all 0.3s ease;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(135deg, #26d0ce, #1dd1a1);
+                box-shadow: 0 0 10px rgba(29, 209, 161, 0.4);
+            }
+
+            ::-webkit-scrollbar-corner {
+                background: rgba(29, 209, 161, 0.1);
+            }
+
+            /* Firefox scrollbar styling */
+            * {
+                scrollbar-width: thin;
+                scrollbar-color: #1dd1a1 rgba(29, 209, 161, 0.1);
+            }
+
+            /* Custom scrollbars for textarea and other elements */
+            textarea::-webkit-scrollbar, 
+            pre::-webkit-scrollbar,
+            .scrollable::-webkit-scrollbar {
+                width: 6px;
+                height: 6px;
+            }
+
+            textarea::-webkit-scrollbar-track,
+            pre::-webkit-scrollbar-track,
+            .scrollable::-webkit-scrollbar-track {
+                background: rgba(29, 209, 161, 0.05);
+                border-radius: 8px;
+            }
+
+            textarea::-webkit-scrollbar-thumb,
+            pre::-webkit-scrollbar-thumb,
+            .scrollable::-webkit-scrollbar-thumb {
+                background: linear-gradient(135deg, #1dd1a1, #26d0ce);
+                border-radius: 8px;
+            }
+
+            textarea::-webkit-scrollbar-thumb:hover,
+            pre::-webkit-scrollbar-thumb:hover,
+            .scrollable::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(135deg, #26d0ce, #1dd1a1);
+            }
             
             /* Custom Cursor Styles */
             .cursor {
@@ -496,6 +556,25 @@ class PortfolioConfig {
                 overflow-y: auto;
             }
 
+            /* Enhanced scrollbar for modal body */
+            #whatsappModal .wa-modal-body::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            #whatsappModal .wa-modal-body::-webkit-scrollbar-track {
+                background: rgba(29, 209, 161, 0.05);
+                border-radius: 8px;
+            }
+
+            #whatsappModal .wa-modal-body::-webkit-scrollbar-thumb {
+                background: linear-gradient(135deg, #1dd1a1, #26d0ce);
+                border-radius: 8px;
+            }
+
+            #whatsappModal .wa-modal-body::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(135deg, #26d0ce, #1dd1a1);
+            }
+
             /* Compact Quick Messages */
             #whatsappModal .wa-quick-messages {
                 margin-bottom: 16px;
@@ -697,6 +776,25 @@ class PortfolioConfig {
                 font-style: italic;
             }
 
+            /* Custom scrollbar for message textarea */
+            #customMessage::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            #customMessage::-webkit-scrollbar-track {
+                background: rgba(29, 209, 161, 0.05);
+                border-radius: 6px;
+            }
+
+            #customMessage::-webkit-scrollbar-thumb {
+                background: linear-gradient(135deg, #1dd1a1, #26d0ce);
+                border-radius: 6px;
+            }
+
+            #customMessage::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(135deg, #26d0ce, #1dd1a1);
+            }
+
             /* Character Counter */
             #charCounter {
                 text-align: right;
@@ -776,7 +874,7 @@ class PortfolioConfig {
                     width: calc(100vw - 24px);
                     right: 12px;
                     bottom: 80px;
-                    max-height: 70vh;
+                    max-height: 75vh; /* Increased from 70vh */
                 }
 
                 #whatsappContainer {
@@ -796,6 +894,7 @@ class PortfolioConfig {
 
                 #whatsappModal .wa-modal-body {
                     padding: 16px;
+                    max-height: calc(75vh - 80px); /* Adjusted accordingly */
                 }
 
                 #whatsappModal .wa-modal-header {
@@ -858,7 +957,7 @@ class PortfolioConfig {
                     width: calc(100vw - 16px);
                     right: 8px;
                     bottom: 75px;
-                    max-height: 65vh;
+                    max-height: 78vh; /* Increased from 65vh */
                 }
 
                 #whatsappContainer {
@@ -878,6 +977,7 @@ class PortfolioConfig {
 
                 #whatsappModal .wa-modal-body {
                     padding: 14px;
+                    max-height: calc(78vh - 75px); /* Adjusted accordingly */
                 }
 
                 #whatsappModal .wa-modal-header {
@@ -902,6 +1002,17 @@ class PortfolioConfig {
                 #sendWhatsappMessage {
                     padding: 8px 14px;
                     font-size: 12px;
+                }
+            }
+
+            @media (max-width: 360px) {
+                #whatsappModal {
+                    max-height: 80vh; /* Even more height for very small screens */
+                    bottom: 70px;
+                }
+
+                #whatsappModal .wa-modal-body {
+                    max-height: calc(80vh - 70px);
                 }
             }
         `;
