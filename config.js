@@ -147,7 +147,6 @@ class PortfolioConfig {
         const styles = `
             /* ===== EXISTING COMMON PORTFOLIO STYLES (UNCHANGED) ===== */
             body { 
-                cursor: none; 
                 margin: 0;
                 padding: 0;
             }
@@ -210,34 +209,6 @@ class PortfolioConfig {
             pre::-webkit-scrollbar-thumb:hover,
             .scrollable::-webkit-scrollbar-thumb:hover {
                 background: linear-gradient(135deg, #26d0ce, #1dd1a1);
-            }
-            
-            /* Custom Cursor Styles */
-            .cursor {
-                width: 20px;
-                height: 20px;
-                border: 2px solid #1dd1a1;
-                border-radius: 50%;
-                position: fixed;
-                pointer-events: none;
-                z-index: 9999;
-                mix-blend-mode: difference;
-                transition: transform 0.1s ease;
-            }
-            
-            .cursor-follower {
-                width: 8px;
-                height: 8px;
-                background: #1dd1a1;
-                border-radius: 50%;
-                position: fixed;
-                pointer-events: none;
-                z-index: 9998;
-                transition: transform 0.15s ease;
-            }
-
-            .cursor, .cursor-follower {
-                transition: transform 0.1s ease, opacity 0.3s ease;
             }
 
             /* Common Button Styles */

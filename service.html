@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Services - Chathuranga Malik</title>
+    
+    <!-- Load Common Configuration -->
+    <script src="config.js"></script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom CSS Variables - Matching your existing design */
+        :root {
+            --primary-color: #1dd1a1;
+            --primary-light: #26d0ce;
+            --primary-dark: #16a085;
+            --dark-bg: #0d1b1e;
+            --dark-surface: #1a2f32;
+            --dark-overlay: #0f2027;
+            --dark-accent: #203a43;
+        }
+
+        /* Services Section Background - MATCHING ABOUT SECTION */
+        .services-bg {
+            background: linear-gradient(135deg, #0d1b1e 0%, #1a2f32 25%, #0f2027 50%, #203a43 75%, #0d1b1e 100%);
+            position: relative;
+            overflow: hidden;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Floating accent shapes */
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(29, 209, 161, 0.1) 0%, transparent 70%);
+            animation: floatShape 15s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 7s;
+        }
+
+        .floating-shape:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 14s;
+        }
+
+        @keyframes floatShape {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+            50% { transform: translateY(-30px) scale(1.1); opacity: 0.6; }
+        }
+
+        /* Enhanced 3D Flip Card Styling */
+        .flip-card {
+            perspective: 1000px;
+            height: 400px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.7s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 28px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+            padding: 24px;
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        /* Diverse card styles */
+        .card-style-1 {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(29, 209, 161, 0.2);
+            color: #333;
+        }
+
+        .card-style-1-back {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+        }
+
+        .card-style-2 {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .card-style-2-back {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            color: white;
+        }
+
+        .card-style-3 {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(29, 209, 161, 0.2);
+            color: #333;
+        }
+
+        .card-style-3-back {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+        }
+
+        .card-style-4 {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+        }
+
+        .card-style-4-back {
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+            color: white;
+        }
+
+        .card-style-5 {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(29, 209, 161, 0.2);
+            color: #333;
+        }
+
+        .card-style-5-back {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            color: #333;
+        }
+
+        .card-style-6 {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: #333;
+        }
+
+        .card-style-6-back {
+            background: linear-gradient(135deg, #fecfef, #ff9a9e);
+            color: #333;
+        }
+
+        .card-style-7 {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(29, 209, 161, 0.2);
+            color: #333;
+        }
+
+        .card-style-7-back {
+            background: linear-gradient(135deg, #fa709a, #fee140);
+            color: white;
+        }
+
+        .card-style-8 {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            color: #333;
+        }
+
+        .card-style-8-back {
+            background: linear-gradient(135deg, #fed6e3, #a8edea);
+            color: #333;
+        }
+
+        /* Icon styling */
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .card-style-2 .service-icon,
+        .card-style-4 .service-icon,
+        .card-style-6 .service-icon {
+            color: white;
+        }
+
+        .flip-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        /* Back side icon smaller and fixed at top */
+        .flip-card-back .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            align-self: center;
+            flex-shrink: 0;
+        }
+
+        /* Service title fixed at top */
+        .flip-card-back .service-title {
+            flex-shrink: 0;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Scrollable content area using global styles */
+        .scrollable-content {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 8px;
+            margin-right: -8px;
+        }
+
+        /* Typography */
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .service-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            text-align: center;
+        }
+
+        .service-description-back {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .service-features li {
+            padding: 4px 0;
+            font-size: 0.85rem;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .service-tech-stack {
+            margin-top: 1rem;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            margin: 2px;
+            font-weight: 600;
+        }
+
+        /* Hover effects */
+        .flip-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .flip-card-front:hover {
+            box-shadow: 0 12px 40px rgba(29, 209, 161, 0.3);
+        }
+
+        /* Animation classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section title styling */
+        .section-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #8b949e;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #1dd1a1;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Container padding adjustments */
+        .services-container {
+            padding-top: 6rem;
+            padding-bottom: 8rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            margin-top: 4rem;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(29, 209, 161, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(29, 209, 161, 0.2);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 0 10px 10px 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(29, 209, 161, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .floating-shape {
+                display: none;
+            }
+            
+            .flip-card {
+                height: 350px;
+            }
+            
+            .service-icon {
+                font-size: 2.8rem;
+                margin-bottom: 1rem;
+            }
+            
+            .service-title {
+                font-size: 1.3rem;
+            }
+            
+            .service-description {
+                font-size: 0.9rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .services-container {
+                padding-top: 4rem;
+                padding-bottom: 6rem;
+            }
+
+            .services-bg {
+                min-height: auto;
+            }
+
+            .services-grid {
+                gap: 2rem;
+            }
+
+            .cta-section {
+                margin-top: 3rem;
+                padding: 2rem 1rem;
+            }
+
+            .flip-card-back {
+                padding: 20px;
+            }
+
+            .service-features li {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .flip-card {
+                height: 320px;
+            }
+
+            .service-icon {
+                font-size: 2.5rem;
+            }
+
+            .service-title {
+                font-size: 1.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .services-container {
+                padding-top: 3rem;
+                padding-bottom: 5rem;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1024px) {
+            .flip-card {
+                height: 420px;
+            }
+
+            .services-container {
+                padding-top: 8rem;
+                padding-bottom: 10rem;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .flip-card {
+                height: 450px;
+            }
+
+            .services-container {
+                padding-top: 10rem;
+                padding-bottom: 12rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Services Section -->
+    <section class="services-bg py-16 sm:py-20 md:py-24 relative">
+        <!-- Floating background shapes -->
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        
+        <div class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 services-container">
+            <!-- Section Title -->
+            <div class="section-title fade-in-up" style="animation-delay: 0.1s;">
+                <div class="section-subtitle">Professional Development Services</div>
+                <h2>Full-Stack Laravel Solutions</h2>
+                <p>
+                    Specialized Laravel developer with 2+ years of experience in building modern web applications. 
+                    I deliver enterprise-grade solutions using Laravel, Vue.js, and cutting-edge technologies 
+                    for businesses looking to scale their digital presence.
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                
+                <!-- Service 1: Laravel Full-Stack Development -->
+                <div class="flip-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="flip-card-inner">
+                        <!-- Front Side -->
+                        <div class="flip-card-front card-style-1">
+                            <i class="fab fa-laravel service-icon"></i>
+                            <h3 class="service-title">Laravel Full-Stack Development</h3>
+                            <p class="service-description">
+                                Complete web application development with Laravel framework and modern frontend technologies
+                            </p>
+                        </div>
+                        <!-- Back Side -->
+                        <div class="flip-card-back card-style-1-back">
+                            <i class="fab fa-laravel service-icon"></i>
+                            <h3 class="service-title">Laravel Full-Stack Development</h3>
+                            <div class="scrollable-content">
+                                <p class="service-description-back">
+                                    End-to-end web application development using Laravel's powerful ecosystem for scalable and maintainable solutions.
+                                </p>
+                                <ul class="service-features">
+                                    <li>Custom Laravel applications from scratch</li>
+                                    <li>MVC architecture implementation</li>
+                                    <li>Eloquent ORM & advanced database design</li>
+                                    <li>Multi-role authentication & authorization</li>
+                                    <li>Payment gateway integration (Stripe, PayPal)</li>
+                                    <li>Admin panels & comprehensive dashboards</li>
+                                    <li>RESTful API development & documentation</li>
+                                    <li>Third-party service integrations</li>
+                                    <li>Performance optimization & caching</li>
+                                </ul>
+                                <div class="service-tech-stack">
+                                    <span class="tech-tag">Laravel 10+</span>
+                                    <span class="tech-tag">PHP 8+</span>
+                                    <span class="tech-tag">Eloquent ORM</span>
+                                    <span class="tech-tag">Blade Templates</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: SPA with Vue.js & Inertia.js -->
+                <div class="flip-card fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="flip-card-inner">
+                        <!-- Front Side -->
+                        <div class="flip-card-front card-style-2">
+                            <i class="fab fa-vuejs service-icon"></i>
+                            <h3 class="service-title">Single Page Applications</h3>
+                            <p class="service-description">
+                                Modern SPA development with Vue.js and Inertia.js for seamless user experiences
+                            </p>
+                        </div>
+                        <!-- Back Side -->
+                        <div class="flip-card-back card-style-2-back">
+                            <i class="fab fa-vuejs service-icon"></i>
+                            <h3 class="service-title">SPA Development</h3>
+                            <div class="scrollable-content">
+                                <p class="service-description-back">
+                                    Building fast, reactive single-page applications with modern JavaScript frameworks and seamless Laravel integration.
+                                </p>
+                                <ul class="service-features">
+                                    <li>Vue.js 3 with Composition API</li>
+                                    <li>Inertia.js for Laravel SPA integration</li>
+                                    <li>Server-side routing with client-side rendering</li>
+                                    <li>Real-time data binding & state management</li>
+                                    <li>Component-based architecture</li>
+                                    <li>Progressive web app (PWA) features</li>
+                                    <li>Mobile-responsive design patterns</li>
+                                    <li>Advanced form handling & validation</li>
+                                    <li>Optimized build processes with Vite</li>
+                                </ul>
+                                <div class="service-tech-stack">
+                                    <span class="tech-tag">Vue.js 3</span>
+                                    <span class="tech-tag">Inertia.js</span>
+                                    <span class="tech-tag">Vite</span>
+                                    <span class="tech-tag">Pinia</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: E-commerce Solutions -->
+                <div class="flip-card fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="flip-card-inner">
+                        <!-- Front Side -->
+                        <div class="flip-card-front card-style-3">
+                            <i class="fas fa-shopping-cart service-icon"></i>
+                            <h3 class="service-title">E-commerce Solutions</h3>
+                            <p class="service-description">
+                                Complete online store development with shopping carts, payments, and inventory management
+                            </p>
+                        </div>
+                        <!-- Back Side -->
+                        <div class="flip-card-back card-style-3-back">
+                            <i class="fas fa-shopping-cart service-icon"></i>
+                            <h3 class="service-title">E-commerce Development</h3>
+                            <div class="scrollable-content">
+                                <p class="service-description-back">
+                                    Full-featured e-commerce platforms with modern payment solutions, inventory management, and scalable architecture.
+                                </p>
+                                <ul class="service-features">
+                                    <li>Custom shopping cart systems</li>
+                                    <li>Multi-payment gateway integration</li>
+                                    <li>Advanced product catalog management</li>
+                                    <li>Comprehensive order management system</li>
+                                    <li>Real-time inventory tracking</li>
+                                    <li>Multi-vendor marketplace features</li>
+                                    <li>SEO optimization & analytics</li>
+                                    <li>Customer reviews & rating system</li>
+                                    <li>Discount & coupon management</li>
+                                    <li>Mobile-optimized checkout process</li>
+                                </ul>
+                                <div class="service-tech-stack">
+                                    <span class="tech-tag">Laravel Cashier</span>
+                                    <span class="tech-tag">Stripe API</span>
+                                    <span class="tech-tag">PayPal SDK</span>
+                                    <span class="tech-tag">Mail Integration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4: REST API & Integrations -->
+                <div class="flip-card fade-in-up" style="animation-delay: 0.5s;">
+                    <div class="flip-card-inner">
+                        <!-- Front Side -->
+                        <div class="flip-card-front card-style-4">
+                            <i class="fas fa-code service-icon"></i>
+                            <h3 class="service-title">API Development</h3>
+                            <p class="service-description">
+                                Secure REST APIs and third-party integrations for mobile apps and web services
+                            </p>
+                        </div>
+                        <!-- Back Side -->
+                        <div class="flip-card-back card-style-4-back">
+                            <i class="fas fa-code service-icon"></i>
+                            <h3 class="service-title">API Development</h3>
+                            <div class="scrollable-content">
+                                <p class="service-description-back">
+                                    Robust API development and integration services for scalable applications with comprehensive security and documentation.
+                                </p>
+                                <ul class="service-features">
+                                    <li>RESTful API design & development</li>
+                                    <li>JWT & Sanctum authentication</li>
+                                    <li>Comprehensive API documentation</li>
+                                    <li>Rate limiting & security middleware</li>
+                                    <li>Third-party API integrations</li>
+                                    <li>Webhook implementations</li>
+                                    <li>API testing & automated testing</li>
+                                    <li>Version control & backward compatibility</li>
+                                    <li>Real-time API monitoring</li>
+                                    <li>GraphQL implementation</li>
+                                </ul>
+                                <div class="service-tech-stack">
+                                    <span class="tech-tag">Laravel Sanctum</span>
+                                    <span class="tech-tag">JWT Auth</span>
+                                    <span class="tech-tag">Postman</span>
+                                    <span class="tech-tag">Swagger</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 5: Database Design & Optimization -->
+                <div class="flip-card fade-in-up" style="animation-delay: 0.6s;">
+                    <div class="flip-card-inner">
+                        <!-- Front Side -->
+                        <div class="flip-card-front card-style-5">
+                            <i class="fas fa-database service-icon"></i>
+                            <h3 class="service-title">Database Solutions</h3>
+                            <p class="service-description">
+                                Efficient database design, optimization, and migration services for high-performance applications
+                            </p>
+                        </div>
+                        <!-- Back Side -->
+                        <div class="flip-card-back card-style-5-back">
+                            <i class="fas fa-database service-icon"></i>
+                            <h3 class="service-title">Database Solutions</h3>
+                            <div class="scrollable-content">
+                                <p class="service-description-back">
+                                    Professional database architecture and optimization for maximum performance, scalability, and data integrity.
+                                </p>
+                                <ul class="service-features">
+                                    <li>Normalized database schema design</li>
+                                    <li>Advanced query optimization</li>
+                                    <li>MySQL & PostgreSQL expertise</li>
+                                    <li>Complex database migrations</li>
+                                    <li>Performance tuning & indexing</li>
+                                    <li>Backup & recovery strategies</li>
+                                    <li>Data modeling & relationships</li>
+                                    <li>Database security implementation</li>
+                                    <li>Replication & clustering setup</li>
+                                    <li>NoSQL integration (Redis, MongoDB)</li>
+                                </ul>
+                                <div class="service-tech-stack">
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">Redis</span>
+                                    <span class="tech-tag">MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 6: Laravel Livewire Applications -->
+                <div class="flip-card fade-in-up" style="animation-delay: 0.7s;">
+                    <div class="flip-card-inner">
+                        <!-- Front Side -->
+                        <div class="flip-card-front card-style-6">
+                            <i class="fas fa-bolt service-icon"></i>
+                            <h3 class="service-title">Livewire Development</h3>
+                            <p class="service-description">
+                                Interactive web applications using Laravel Livewire for real-time user interfaces
+                            </p>
+                        </div>
+                        <!-- Back Side -->
+                        <div class="flip-card-back card-style-6-back">
+                            <i class="fas fa-bolt service-icon"></i>
+                            <h3 class="service-title">Livewire Development</h3>
+                            <div class="scrollable-content">
+                                <p class="service-description-back">
+                                    Dynamic web applications with real-time interactions using Laravel Livewire for seamless user experiences without complex JavaScript.
+                                </p>
+                                <ul class="service-features">
+                                    <li>Real-time reactive components</li>
+                                    <li>Dynamic forms with live validation</li>
+                                    <li>File upload with progress tracking</li>
+                                    <li>Live search & advanced filtering</li>
+                                    <li>Real-time data tables & pagination</li>
+                                    <li>Interactive modals & notifications</li>
+                                    <li>Multi-step wizards & forms</li>
+                                    <li>Real-time chat implementations</li>
+                                    <li>Dashboard widgets & analytics</li>
+                                    <li>Alpine.js integration for enhanced UX</li>
+                                </ul>
+                                <div class="service-tech-stack">
+                                    <span class="tech-tag">Livewire 3</span>
+                                    <span class="tech-tag">Alpine.js</span>
+                                    <span class="tech-tag">Turbo</span>
+                                    <span class="tech-tag">WebSockets</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 7: Custom Web Applications -->
+                <div class="flip-card fade-in-up" style="animation-delay: 0.8s;">
+                    <div class="flip-card-inner">
+                        <!-- Front Side -->
+                        <div class="flip-card-front card-style-7">
+                            <i class="fas fa-laptop-code service-icon"></i>
+                            <h3 class="service-title">Custom Applications</h3>
+                            <p class="service-description">
+                                Bespoke web applications tailored to your specific business requirements and workflows
+                            </p>
+                        </div>
+                        <!-- Back Side -->
+                        <div class="flip-card-back card-style-7-back">
+                            <i class="fas fa-laptop-code service-icon"></i>
+                            <h3 class="service-title">Custom Applications</h3>
+                            <div class="scrollable-content">
+                                <p class="service-description-back">
+                                    Tailored web solutions designed specifically for your business needs with custom workflows and advanced functionality.
+                                </p>
+                                <ul class="service-features">
+                                    <li>Business workflow automation systems</li>
+                                    <li>Custom CRM & CMS platforms</li>
+                                    <li>Project management & collaboration tools</li>
+                                    <li>Booking & scheduling applications</li>
+                                    <li>Financial management & reporting tools</li>
+                                    <li>Advanced reporting & analytics dashboards</li>
+                                    <li>Multi-user access control systems</li>
+                                    <li>Document management systems</li>
+                                    <li>Custom inventory management</li>
+                                    <li>Integration with existing business tools</li>
+                                </ul>
+                                <div class="service-tech-stack">
+                                    <span class="tech-tag">Custom Architecture</span>
+                                    <span class="tech-tag">Business Logic</span>
+                                    <span class="tech-tag">Workflow Engine</span>
+                                    <span class="tech-tag">Reporting Tools</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 8: Performance & Deployment -->
+                <div class="flip-card fade-in-up" style="animation-delay: 0.9s;">
+                    <div class="flip-card-inner">
+                        <!-- Front Side -->
+                        <div class="flip-card-front card-style-8">
+                            <i class="fas fa-rocket service-icon"></i>
+                            <h3 class="service-title">Optimization & Deployment</h3>
+                            <p class="service-description">
+                                Performance optimization, cloud deployment, and ongoing maintenance services
+                            </p>
+                        </div>
+                        <!-- Back Side -->
+                        <div class="flip-card-back card-style-8-back">
+                            <i class="fas fa-rocket service-icon"></i>
+                            <h3 class="service-title">Optimization & Deployment</h3>
+                            <div class="scrollable-content">
+                                <p class="service-description-back">
+                                    Complete deployment and optimization services for maximum performance, security, and scalability in production environments.
+                                </p>
+                                <ul class="service-features">
+                                    <li>Application performance optimization</li>
+                                    <li>Cloud deployment (AWS, DigitalOcean, Vultr)</li>
+                                    <li>Server configuration & management</li>
+                                    <li>SSL certificate setup & security</li>
+                                    <li>Domain & hosting configuration</li>
+                                    <li>CI/CD pipeline implementation</li>
+                                    <li>Database optimization & caching</li>
+                                    <li>Monitoring & error tracking setup</li>
+                                    <li>Backup & disaster recovery</li>
+                                    <li>Ongoing maintenance & support</li>
+                                </ul>
+                                <div class="service-tech-stack">
+                                    <span class="tech-tag">AWS</span>
+                                    <span class="tech-tag">Docker</span>
+                                    <span class="tech-tag">Nginx</span>
+                                    <span class="tech-tag">Redis Cache</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call-to-Action Section -->
+            <div class="cta-section fade-in-up" style="animation-delay: 1.0s;">
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
+                    Ready to Start Your Project?
+                </h3>
+                <p class="text-gray-300 mb-6 text-lg max-w-2xl mx-auto">
+                    Let's discuss your requirements and build something amazing together. 
+                    I'm available for both full-time opportunities and freelance projects.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="mailto:chathurangamalik1997@gmail.com" class="cta-button">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Get In Touch
+                    </a>
+                    <a href="https://wa.me/94763241451" class="cta-button secondary">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        WhatsApp Chat
+                    </a>
+                    <a href="https://linkedin.com/in/chathuranga-malik-b61295201" class="cta-button">
+                        <i class="fab fa-linkedin mr-2"></i>
+                        View Profile
+                    </a>
+                </div>
+                <div class="mt-6 text-sm text-gray-400">
+                    <p>⚡ Quick Response • 💼 Professional Service • 🚀 Quality Guaranteed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+
+            // Enhanced hover effects with scroll management
+            document.querySelectorAll('.flip-card').forEach(card => {
+                const scrollableContent = card.querySelector('.scrollable-content');
+                
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    
+                    // Reset scroll position when leaving card
+                    if (scrollableContent) {
+                        scrollableContent.scrollTop = 0;
+                    }
+                });
+            });
+
+            // Click handler for mobile devices
+            document.querySelectorAll('.flip-card').forEach(card => {
+                let isFlipped = false;
+                
+                card.addEventListener('click', function(e) {
+                    // Only handle clicks on mobile/tablet
+                    if (window.innerWidth <= 1024) {
+                        e.preventDefault();
+                        const inner = this.querySelector('.flip-card-inner');
+                        
+                        if (isFlipped) {
+                            inner.style.transform = 'rotateY(0deg)';
+                            isFlipped = false;
+                        } else {
+                            inner.style.transform = 'rotateY(180deg)';
+                            isFlipped = true;
+                        }
+                    }
+                });
+            });
+
+            // Smooth scroll for CTA buttons (for parent frame navigation)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    if (window.parent !== window) {
+                        window.parent.postMessage({
+                            action: 'scrollTo',
+                            target: this.getAttribute('href')
+                        }, '*');
+                    }
+                });
+            });
+
+            // Track service card interactions for analytics
+            document.querySelectorAll('.flip-card').forEach((card, index) => {
+                const serviceTitle = card.querySelector('.service-title').textContent;
+                
+                card.addEventListener('mouseenter', function() {
+                    console.log(`Service viewed: ${serviceTitle}`);
+                });
+                
+                // Track scrolling in service cards (only on back side)
+                const scrollableContent = card.querySelector('.scrollable-content');
+                if (scrollableContent) {
+                    scrollableContent.addEventListener('scroll', function() {
+                        if (this.scrollTop > 50) {
+                            console.log(`Service details explored: ${serviceTitle}`);
+                        }
+                    });
+                }
+            });
+
+            // Add click tracking for CTA buttons
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const action = this.textContent.trim();
+                    console.log(`CTA clicked: ${action}`);
+                });
+            });
+
+            // Add tech tag hover effects
+            document.querySelectorAll('.tech-tag').forEach(tag => {
+                tag.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1)';
+                    this.style.background = 'rgba(29, 209, 161, 0.8)';
+                    this.style.color = 'white';
+                });
+                
+                tag.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.background = 'rgba(255, 255, 255, 0.2)';
+                    this.style.color = '';
+                });
+            });
+
+            console.log('Professional services section loaded successfully with enhanced scrollable flip cards and comprehensive Laravel expertise showcase');
+        });
+    </script>
+</body>
+</html>

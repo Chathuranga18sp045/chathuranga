@@ -6,6 +6,9 @@
     <title>Chathuranga Malik - Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Load Common Configuration -->
     <script src="config.js"></script>
     
@@ -26,6 +29,8 @@
                         'float-shape': 'floatShape 20s infinite linear',
                         'fade-in-up': 'fadeInUp 0.8s ease forwards',
                         'float': 'float 3s ease-in-out infinite',
+                        'slide-in': 'slideIn 0.3s ease-out forwards',
+                        'slide-out': 'slideOut 0.3s ease-in forwards'
                     },
                     keyframes: {
                         floatShape: {
@@ -40,6 +45,14 @@
                         float: {
                             '0%, 100%': { transform: 'translateY(0px)' },
                             '50%': { transform: 'translateY(-10px)' }
+                        },
+                        slideIn: {
+                            'from': { transform: 'translateX(100%)' },
+                            'to': { transform: 'translateX(0)' }
+                        },
+                        slideOut: {
+                            'from': { transform: 'translateX(0)' },
+                            'to': { transform: 'translateX(100%)' }
                         }
                     },
                     backgroundImage: {
@@ -56,12 +69,57 @@
     
     <style>
         /* Custom CSS that cannot be replicated with Tailwind */
+        body {
+            margin: 0;
+            padding: 0;
+            cursor: auto;
+        }
+        
         .hero-bg {
             background: linear-gradient(to right, rgba(10, 46, 42, 0.9) 0%, rgba(10, 46, 42, 0.7) 30%, rgba(10, 46, 42, 0.3) 50%, transparent 100%), 
                         url('https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/hero-bg.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+        }
+
+        /* Improved iframe styling with better height management */
+        .services-iframe, .about-iframe, .footer-iframe {
+            border: none;
+            width: 100%;
+            display: block;
+            transition: height 0.3s ease;
+        }
+
+        /* Specific iframe height management - IMPROVED FOR MOBILE */
+        .services-iframe {
+            min-height: 1200px; /* Increased for desktop */
+        }
+
+        .about-iframe {
+            min-height: 900px; /* Increased for desktop */
+        }
+
+        .footer-iframe {
+            min-height: 10px; /* Increased for desktop */
+        }
+
+        /* Remove height constraints to allow natural sizing */
+        #services, #about, #footer {
+            height: auto;
+            overflow: visible;
+        }
+
+        /* Ensure seamless section transitions */
+        section {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Remove any default margins that might cause gaps */
+        iframe {
+            margin: 0;
+            vertical-align: top;
         }
         
         .navbar-transparent {
@@ -108,22 +166,146 @@
             50% { border-color: #1dd1a1 }
         }
         
-        /* Iframe auto-height - This allows iframes to size naturally */
-        .about-iframe, .footer-iframe {
-            border: none;
-            width: 100%;
-            display: block;
+        /* Navigation active state */
+        .nav-link.active {
+            color: #1dd1a1 !important;
         }
         
-        /* Remove min-height constraints to allow natural sizing */
-        #about, #footer {
+        .nav-link.active .nav-underline {
+            width: 100% !important;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(10, 46, 42, 0.95) 0%, rgba(15, 32, 39, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-nav.open {
+            transform: translateX(0);
+        }
+        
+        .mobile-nav-item {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mobile-nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(29, 209, 161, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .mobile-nav-item:hover::before {
+            left: 100%;
+        }
+        
+        /* Hamburger Animation */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 4px;
+        }
+        
+        .hamburger span {
+            display: block;
+            height: 2px;
+            width: 25px;
+            background: white;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Remove all cursor effects */
+        * {
+            cursor: auto !important;
+        }
+        
+        /* Mobile responsiveness - GREATLY IMPROVED */
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+
+            .services-iframe {
+                min-height: 1200px; /* Significantly increased for mobile */
+            }
+
+            .about-iframe {
+                min-height:1200px; /* Significantly increased for mobile */
+            }
+
+            .footer-iframe {
+                min-height: 1300px; /* Increased for mobile */
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .services-iframe {
+                min-height: 2150px; /* Even more for small screens */
+            }
+
+            .about-iframe {
+                min-height: 1200px; /* Even more for small screens */
+            }
+
+            .footer-iframe {
+                min-height: 1540px; /* Even more for small screens */
+            }
+        }
+
+        /* Very small mobile devices */
+        @media (max-width: 360px) {
+            .services-iframe {
+                min-height: 1600px; /* Maximum for very small screens */
+            }
+
+            .about-iframe {
+                min-height: 1300px; /* Maximum for very small screens */
+            }
+
+            .footer-iframe {
+                min-height: 1550px; /* Maximum for very small screens */
+            }
+        }
+
+        /* Ensure body doesn't have extra height */
+        html, body {
             height: auto;
+            overflow-x: hidden;
         }
     </style>
 </head>
 <body class="overflow-x-hidden">
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full px-8 md:px-12 py-4 flex justify-between items-center z-50 transition-all duration-300 navbar-transparent">
+    <nav id="navbar" class="fixed top-0 w-full px-4 sm:px-8 md:px-12 py-4 flex justify-between items-center z-50 transition-all duration-300 navbar-transparent">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 bg-gradient-to-r from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-sm">
                 CM
@@ -131,33 +313,122 @@
             <span class="text-xl font-bold text-white">Chathuranga.</span>
         </div>
         
+        <!-- Desktop Navigation -->
         <ul class="hidden md:flex gap-8 lg:gap-10 list-none">
-            <li><a href="#home" class="text-white font-medium hover:text-primary transition-colors duration-300 relative group">
+            <li><a href="#home" class="nav-link text-white font-medium hover:text-primary transition-colors duration-300 relative group">
                 Home
-                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span class="nav-underline absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </a></li>
-            <li><a href="#about" class="text-white font-medium hover:text-primary transition-colors duration-300 relative group">
+            <li><a href="#about" class="nav-link text-white font-medium hover:text-primary transition-colors duration-300 relative group">
                 About Me
-                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span class="nav-underline absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </a></li>
-            <li><a href="#services" class="text-white font-medium hover:text-primary transition-colors duration-300 relative group">
+            <li><a href="#services" class="nav-link text-white font-medium hover:text-primary transition-colors duration-300 relative group">
                 Services
-                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span class="nav-underline absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </a></li>
-            <li><a href="#portfolio" class="text-white font-medium hover:text-primary transition-colors duration-300 relative group">
+            <li><a href="#portfolio" class="nav-link text-white font-medium hover:text-primary transition-colors duration-300 relative group">
                 Portfolio
-                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span class="nav-underline absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </a></li>
-            <li><a href="#contact" class="text-white font-medium hover:text-primary transition-colors duration-300 relative group">
+            <li><a href="#contact" class="nav-link text-white font-medium hover:text-primary transition-colors duration-300 relative group">
                 Contact
-                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span class="nav-underline absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </a></li>
         </ul>
         
-        <button id="downloadCV" class="bg-gradient-to-r from-primary to-primary-light text-white px-5 py-2.5 md:px-6 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl">
+        <!-- Desktop CV Button -->
+        <button id="downloadCV" class="hidden md:block bg-gradient-to-r from-primary to-primary-light text-white px-6 py-3 rounded-full font-semibold text-base transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl">
             Download CV
         </button>
+        
+        <!-- Mobile Controls -->
+        <div class="md:hidden flex items-center gap-3">
+            <!-- Mobile CV Button (Icon Only) -->
+            <button id="downloadCVMobile" class="bg-gradient-to-r from-primary to-primary-light text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:shadow-lg">
+                <i class="fas fa-download text-sm"></i>
+            </button>
+            
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuToggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </nav>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobileNav" class="mobile-nav">
+        <div class="flex flex-col h-full">
+            <!-- Mobile Nav Header -->
+            <div class="flex justify-between items-center p-6 border-b border-primary border-opacity-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-sm">
+                        CM
+                    </div>
+                    <span class="text-xl font-bold text-white">Chathuranga.</span>
+                </div>
+                <button id="closeMobileNav" class="text-white text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation Links -->
+            <nav class="flex-1 flex flex-col justify-center px-6">
+                <ul class="space-y-6">
+                    <li class="mobile-nav-item">
+                        <a href="#home" class="mobile-nav-link block text-white text-2xl font-medium py-4 transition-all duration-300 hover:text-primary hover:translate-x-4">
+                            <i class="fas fa-home mr-4 text-primary"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#about" class="mobile-nav-link block text-white text-2xl font-medium py-4 transition-all duration-300 hover:text-primary hover:translate-x-4">
+                            <i class="fas fa-user mr-4 text-primary"></i>
+                            About Me
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#services" class="mobile-nav-link block text-white text-2xl font-medium py-4 transition-all duration-300 hover:text-primary hover:translate-x-4">
+                            <i class="fas fa-cogs mr-4 text-primary"></i>
+                            Services
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#portfolio" class="mobile-nav-link block text-white text-2xl font-medium py-4 transition-all duration-300 hover:text-primary hover:translate-x-4">
+                            <i class="fas fa-briefcase mr-4 text-primary"></i>
+                            Portfolio
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#contact" class="mobile-nav-link block text-white text-2xl font-medium py-4 transition-all duration-300 hover:text-primary hover:translate-x-4">
+                            <i class="fas fa-envelope mr-4 text-primary"></i>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Nav Footer -->
+            <div class="p-6 border-t border-primary border-opacity-20">
+                <div class="flex justify-center gap-4">
+                    <a href="https://www.linkedin.com/in/chathuranga-malik-b61295201" class="w-12 h-12 bg-primary bg-opacity-20 rounded-full flex items-center justify-center text-primary transition-all duration-300 hover:bg-opacity-30">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Chathuranga18sp045" class="w-12 h-12 bg-primary bg-opacity-20 rounded-full flex items-center justify-center text-primary transition-all duration-300 hover:bg-opacity-30">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.facebook.com/chathuranga.malik/" class="w-12 h-12 bg-primary bg-opacity-20 rounded-full flex items-center justify-center text-primary transition-all duration-300 hover:bg-opacity-30">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="mailto:chathurangamalik1997@gmail.com" class="w-12 h-12 bg-primary bg-opacity-20 rounded-full flex items-center justify-center text-primary transition-all duration-300 hover:bg-opacity-30">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="min-h-screen hero-bg relative">
@@ -168,33 +439,33 @@
             <div class="absolute w-12 h-12 md:w-15 md:h-15 top-4/5 left-1/5 rounded-full bg-primary bg-opacity-10 animate-float-shape" style="animation-delay: 10s;"></div>
         </div>
 
-        <div class="min-h-screen flex items-center px-8 md:px-12 relative z-20">
+        <div class="min-h-screen flex items-center px-4 sm:px-8 md:px-12 relative z-20">
             <div class="max-w-3xl text-white">
-                <div class="flex items-center text-primary font-semibold mb-5 opacity-0 transform translate-y-8 animate-fade-in-up mt-16 sm:mt-36" style="animation-delay: 0.2s;">
+                <div class="flex items-center text-primary font-semibold mb-5 opacity-0 transform translate-y-8 animate-fade-in-up mt-16 sm:mt-20 md:mt-36" style="animation-delay: 0.2s;">
                     <div class="w-2.5 h-2.5 bg-primary rounded-full mr-4"></div>
                     Your Vision, My Code Expertise
                 </div>
                 
-                <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight mb-6 md:mb-8 opacity-0 transform translate-y-8 animate-fade-in-up" style="animation-delay: 0.4s;">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight mb-6 md:mb-8 opacity-0 transform translate-y-8 animate-fade-in-up" style="animation-delay: 0.4s;">
                     I'm <span class="text-gradient typewriter">Chathuranga</span>,<br>
                     software engineer<br>
                     based in <span class="text-gradient">Sri Lanka</span>
                 </h1>
                 
-                <p class="text-base md:text-md lg:text-lg leading-relaxed mb-8 md:mb-10 text-gray-300 opacity-0 transform translate-y-8 animate-fade-in-up max-w-2xl" style="animation-delay: 0.6s;">
+                <p class="text-sm sm:text-base md:text-md lg:text-lg leading-relaxed mb-8 md:mb-10 text-gray-300 opacity-0 transform translate-y-8 animate-fade-in-up max-w-2xl" style="animation-delay: 0.6s;">
                     Hi, I'm Chathuranga Malik, a passionate Software Engineer based in Sri Lanka. I specialize in 
                     crafting robust, scalable Laravel applications with Vue.js frontends using Inertia.js and Livewire. 
                     With 2+ years of focused Laravel development experience.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-5 items-start sm:items-center opacity-0 transform translate-y-8 animate-fade-in-up" style="animation-delay: 0.8s;">
-                    <a href="#contact" class="bg-gradient-to-r from-primary to-primary-light text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold hover:transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-float inline-block text-center">
+                    <a href="#contact" class="bg-gradient-to-r from-primary to-primary-light text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold hover:transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-float inline-block text-center text-sm sm:text-base">
                         Get Started
                     </a>
                     
-                    <button id="watchIntroBtn" class="flex items-center gap-4 text-white font-semibold hover:text-primary transition-colors duration-300 cursor-pointer">
+                    <button id="watchIntroBtn" class="flex items-center gap-4 text-white font-semibold hover:text-primary transition-colors duration-300">
                         <div class="play-btn w-8 h-8 md:w-12 md:h-12 border-2 border-primary rounded-full flex items-center justify-center bg-primary bg-opacity-10 transition-all duration-300 relative hover:bg-opacity-20 hover:scale-110"></div>
-                        Watch Intro
+                        <span class="text-sm sm:text-base">Watch Intro</span>
                     </button>
                 </div>
             </div>
@@ -205,13 +476,13 @@
     <section id="services-ticker" class="relative z-30 -mb-12">
         <iframe 
             src="animation.html"
-            class="border-none w-full h-20 relative"
+            class="border-none w-full h-16 sm:h-20 relative"
             frameborder="0"
             scrolling="no">
         </iframe>
     </section>
     
-    <!-- About Us Section - Auto Height -->
+    <!-- About Us Section -->
     <section id="about" class="relative">
         <iframe 
             src="about.html" 
@@ -222,7 +493,18 @@
         </iframe>
     </section>
 
-    <!-- Footer Section - Auto Height -->
+    <!-- Services Section -->
+    <section id="services" class="relative">
+        <iframe 
+            src="service.html" 
+            class="services-iframe" 
+            frameborder="0" 
+            scrolling="no"
+            onload="autoResizeIframe(this)">
+        </iframe>
+    </section>
+
+    <!-- Footer Section -->
     <section id="footer" class="relative">
         <iframe 
             src="footer.html" 
@@ -251,9 +533,7 @@
             <div class="text-center">
                 <!-- Success Icon -->
                 <div class="mx-auto flex items-center justify-center w-16 h-16 bg-gradient-to-r from-primary to-primary-light rounded-full mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <i class="fas fa-check text-white text-xl"></i>
                 </div>
                 
                 <!-- Title -->
@@ -274,69 +554,150 @@
     </div>
 
     <script>
-        // Auto-resize iframe to match content height
+        // Improved auto-resize iframe function with MUCH better mobile height management
         function autoResizeIframe(iframe) {
-            // Set initial height
-            iframe.style.height = '600px';
+            // Determine screen size
+            const isMobile = window.innerWidth <= 768;
+            const isSmallMobile = window.innerWidth <= 480;
+            const isVerySmallMobile = window.innerWidth <= 360;
             
+            // Set better initial heights based on iframe type and screen size
+            const iframeType = iframe.classList.contains('services-iframe') ? 'services' :
+                              iframe.classList.contains('about-iframe') ? 'about' :
+                              iframe.classList.contains('footer-iframe') ? 'footer' : 'default';
+            
+            // Much more generous initial height settings
+            const initialHeights = {
+                services: isVerySmallMobile ? 1600 : isSmallMobile ? 1400 : isMobile ? 1200 : 1200,
+                about: isVerySmallMobile ? 1100 : isSmallMobile ? 1000 : isMobile ? 900 : 900,
+                footer: isVerySmallMobile ? 800 : isSmallMobile ? 700 : isMobile ? 600 : 600,
+                default: isMobile ? 800 : 600
+            };
+            
+            iframe.style.height = initialHeights[iframeType] + 'px';
+            
+            // First attempt to resize after a short delay
             setTimeout(() => {
                 try {
-                    // Try to get the actual content height
                     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
                     if (iframeDoc && iframeDoc.body) {
-                        const height = Math.max(
-                            iframeDoc.body.scrollHeight,
-                            iframeDoc.body.offsetHeight,
-                            iframeDoc.documentElement.scrollHeight,
-                            iframeDoc.documentElement.offsetHeight
-                        );
+                        const bodyHeight = iframeDoc.body.scrollHeight;
+                        const docHeight = iframeDoc.documentElement.scrollHeight;
+                        const height = Math.max(bodyHeight, docHeight);
                         
-                        if (height > 0) {
+                        if (height > 0 && height !== parseInt(iframe.style.height)) {
                             iframe.style.height = height + 'px';
-                            console.log(`Iframe resized to: ${height}px`);
+                            console.log(`${iframeType} iframe resized to: ${height}px`);
                         }
                     }
                 } catch (e) {
-                    // Cross-origin fallback - set reasonable heights
-                    if (iframe.classList.contains('about-iframe')) {
-                        iframe.style.height = '1200px'; // Generous height for about section
-                    } else if (iframe.classList.contains('footer-iframe')) {
-                        iframe.style.height = '600px'; // Generous height for footer
-                    }
-                    console.log('Cross-origin restriction - using fallback height');
+                    // Cross-origin fallback with much better mobile heights
+                    const fallbackHeights = {
+                        services: isVerySmallMobile ? 1800 : isSmallMobile ? 1600 : isMobile ? 1400 : 1400,
+                        about: isVerySmallMobile ? 1200 : isSmallMobile ? 1100 : isMobile ? 1000 : 1000,
+                        footer: isVerySmallMobile ? 900 : isSmallMobile ? 800 : isMobile ? 700 : 700,
+                        default: isMobile ? 1000 : 800
+                    };
+                    
+                    iframe.style.height = fallbackHeights[iframeType] + 'px';
+                    console.log(`${iframeType} iframe using fallback height: ${fallbackHeights[iframeType]}px`);
                 }
             }, 200);
             
-            // Additional resize after a longer delay to catch late-loading content
+            // Second attempt after content loads
             setTimeout(() => {
                 try {
                     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
                     if (iframeDoc && iframeDoc.body) {
-                        const height = Math.max(
-                            iframeDoc.body.scrollHeight,
-                            iframeDoc.documentElement.scrollHeight
-                        );
+                        const bodyHeight = iframeDoc.body.scrollHeight;
+                        const docHeight = iframeDoc.documentElement.scrollHeight;
+                        const height = Math.max(bodyHeight, docHeight);
+                        
                         if (height > parseInt(iframe.style.height)) {
                             iframe.style.height = height + 'px';
-                            console.log(`Iframe re-resized to: ${height}px`);
+                            console.log(`${iframeType} iframe re-resized to: ${height}px`);
                         }
                     }
                 } catch (e) {
                     // Silent fail for cross-origin
                 }
             }, 1000);
+            
+            // Final attempt after all content loads
+            setTimeout(() => {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    if (iframeDoc && iframeDoc.body) {
+                        const bodyHeight = iframeDoc.body.scrollHeight;
+                        const docHeight = iframeDoc.documentElement.scrollHeight;
+                        const height = Math.max(bodyHeight, docHeight);
+                        
+                        if (height > parseInt(iframe.style.height)) {
+                            iframe.style.height = height + 'px';
+                            console.log(`${iframeType} iframe final resize to: ${height}px`);
+                        }
+                    }
+                } catch (e) {
+                    // Silent fail for cross-origin
+                }
+            }, 2000);
         }
 
         // Page-specific JavaScript
         document.addEventListener('DOMContentLoaded', function() {
             // Setup navbar scroll effect
-            if (typeof PortfolioConfig !== 'undefined') {
-                PortfolioConfig.setupNavbarScroll();
-                PortfolioConfig.setupParallax('#home', 0.5);
+            setupNavbarScroll();
+            setupActiveNavigation();
+            
+            // Mobile Navigation
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            const closeMobileNav = document.getElementById('closeMobileNav');
+            const hamburger = document.querySelector('.hamburger');
+            
+            // Open mobile menu
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileNav.classList.add('open');
+                hamburger.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Close mobile menu
+            function closeMobileMenu() {
+                mobileNav.classList.remove('open');
+                hamburger.classList.remove('open');
+                document.body.style.overflow = 'auto';
             }
+            
+            closeMobileNav.addEventListener('click', closeMobileMenu);
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    closeMobileMenu();
+                    
+                    // Scroll to section
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            mobileNav.addEventListener('click', (e) => {
+                if (e.target === mobileNav) {
+                    closeMobileMenu();
+                }
+            });
 
             // CV Download Function - Updated with real contact info
-            document.getElementById('downloadCV').addEventListener('click', function() {
+            function downloadCV() {
                 const cvContent = `
 CHATHURANGA MALIK
 Software Engineer - Laravel Specialist
@@ -405,7 +766,11 @@ PROJECTS
                 
                 // Show custom thank you modal
                 showAlertModal();
-            });
+            }
+
+            // CV Download buttons
+            document.getElementById('downloadCV').addEventListener('click', downloadCV);
+            document.getElementById('downloadCVMobile').addEventListener('click', downloadCV);
 
             // Alert Modal Functions
             function showAlertModal() {
@@ -462,6 +827,7 @@ PROJECTS
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeVideoModal();
+                    closeMobileMenu();
                 }
             });
 
@@ -479,46 +845,90 @@ PROJECTS
             // Initialize typewriter
             setTimeout(typeWriter, 1000);
 
-            // Particle effect on button hover
-            document.querySelectorAll('a[href="#contact"]').forEach(btn => {
-                btn.addEventListener('mouseenter', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    for (let i = 0; i < 10; i++) {
-                        if (typeof PortfolioConfig !== 'undefined') {
-                            PortfolioConfig.createParticle(rect.left + rect.width/2, rect.top + rect.height/2);
-                        }
-                    }
-                });
-            });
-
-            // Add glitch effect on hover for title
-            const heroTitle = document.querySelector('h1');
-            if (heroTitle) {
-                heroTitle.addEventListener('mouseenter', () => {
-                    heroTitle.style.textShadow = `
-                        2px 0 #ff0000,
-                        -2px 0 #00ff00,
-                        0 2px #0000ff
-                    `;
-                });
-
-                heroTitle.addEventListener('mouseleave', () => {
-                    heroTitle.style.textShadow = 'none';
-                });
-            }
-
             // Make showAlertModal available to iframe components
             window.showAlertModal = showAlertModal;
 
-            // Window resize handler for iframes
+            // Window resize handler for iframes with improved responsiveness
             window.addEventListener('resize', () => {
+                const servicesIframe = document.querySelector('.services-iframe');
                 const aboutIframe = document.querySelector('.about-iframe');
                 const footerIframe = document.querySelector('.footer-iframe');
                 
+                // Re-resize all iframes on window resize
+                if (servicesIframe) autoResizeIframe(servicesIframe);
                 if (aboutIframe) autoResizeIframe(aboutIframe);
                 if (footerIframe) autoResizeIframe(footerIframe);
             });
         });
+
+        // Navbar scroll effect
+        function setupNavbarScroll() {
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+                if (navbar) {
+                    const scrollPosition = window.scrollY;
+                    const viewportHeight = window.innerHeight;
+                    
+                    if (scrollPosition >= viewportHeight * 0.9) {
+                        navbar.classList.remove('navbar-transparent');
+                        navbar.classList.add('navbar-solid');
+                    } else {
+                        navbar.classList.remove('navbar-solid');
+                        navbar.classList.add('navbar-transparent');
+                    }
+                }
+            });
+        }
+
+        // Active navigation highlighting
+        function setupActiveNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section[id]');
+            
+            function updateActiveNavigation() {
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const scrollPosition = window.scrollY + 200; // Offset for navbar
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                // Update active states
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Initial check
+            updateActiveNavigation();
+            
+            // Update on scroll
+            window.addEventListener('scroll', updateActiveNavigation);
+            
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
 
         // Global function to be called from iframe onload
         window.autoResizeIframe = autoResizeIframe;
