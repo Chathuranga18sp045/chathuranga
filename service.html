@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Services - Chathuranga Malik</title>
     
-    <!-- Load Common Configuration -->
-    <script src="config.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Note: This is a standalone services component - no config.js needed to avoid WhatsApp duplication -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -21,6 +24,58 @@
             --dark-surface: #1a2f32;
             --dark-overlay: #0f2027;
             --dark-accent: #203a43;
+        }
+
+        /* Global Scrollbar Styles - Consistent with portfolio theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(29, 209, 161, 0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #1dd1a1, #26d0ce);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #26d0ce, #1dd1a1);
+            box-shadow: 0 0 10px rgba(29, 209, 161, 0.4);
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: rgba(29, 209, 161, 0.1);
+        }
+
+        /* Firefox scrollbar styling */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #1dd1a1 rgba(29, 209, 161, 0.1);
+        }
+
+        /* Enhanced scrollbars for specific elements */
+        .scrollable-content::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        .scrollable-content::-webkit-scrollbar-track {
+            background: rgba(29, 209, 161, 0.05);
+            border-radius: 8px;
+        }
+
+        .scrollable-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #1dd1a1, #26d0ce);
+            border-radius: 8px;
+        }
+
+        .scrollable-content::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #26d0ce, #1dd1a1);
         }
 
         /* Services Section Background - MATCHING ABOUT SECTION */
@@ -229,13 +284,13 @@
             text-align: center;
         }
 
-        /* Scrollable content area using global styles */
+        /* Scrollable content area with enhanced scrollbars */
         .scrollable-content {
             flex: 1;
             overflow-y: auto;
             overflow-x: hidden;
-            padding-right: 8px;
-            margin-right: -8px;
+            padding-right: 4px;
+            margin-right: -4px;
         }
 
         /* Typography */
@@ -509,7 +564,7 @@
 </head>
 <body>
     <!-- Enhanced Services Section -->
-    <section class="services-bg py-16 sm:py-20 md:py-24 relative">
+    <section class="services-bg py-16 sm:py-20 md:pb-24 relative">
         <!-- Floating background shapes -->
         <div class="floating-shape"></div>
         <div class="floating-shape"></div>
@@ -1012,7 +1067,7 @@
                 });
             });
 
-            console.log('Professional services section loaded successfully with enhanced scrollable flip cards and comprehensive Laravel expertise showcase');
+            console.log('Standalone professional services section loaded successfully with enhanced scrollable flip cards and comprehensive Laravel expertise showcase - no WhatsApp duplication');
         });
     </script>
 </body>

@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Chathuranga Malik</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom CSS Variables - Matching your existing design */
+        :root {
+            --primary-color: #1dd1a1;
+            --primary-light: #26d0ce;
+            --primary-dark: #16a085;
+            --dark-bg: #0d1b1e;
+            --dark-surface: #1a2f32;
+            --dark-overlay: #0f2027;
+            --dark-accent: #203a43;
+        }
+
+        /* Portfolio Section Background - MATCHING ABOUT SECTION */
+        .portfolio-bg {
+            background: linear-gradient(135deg, #0d1b1e 0%, #1a2f32 25%, #0f2027 50%, #203a43 75%, #0d1b1e 100%);
+            position: relative;
+            overflow: hidden;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Global Scrollbar Styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(29, 209, 161, 0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #1dd1a1, #26d0ce);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #26d0ce, #1dd1a1);
+            box-shadow: 0 0 10px rgba(29, 209, 161, 0.4);
+        }
+
+        /* Firefox scrollbar styling */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #1dd1a1 rgba(29, 209, 161, 0.1);
+        }
+
+        /* Floating accent shapes */
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(29, 209, 161, 0.1) 0%, transparent 70%);
+            animation: floatShape 15s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 7s;
+        }
+
+        .floating-shape:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 14s;
+        }
+
+        @keyframes floatShape {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+            50% { transform: translateY(-30px) scale(1.1); opacity: 0.6; }
+        }
+
+        /* Modern Portfolio Card Styling */
+        .portfolio-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(29, 209, 161, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            height: 470px;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(29, 209, 161, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(29, 209, 161, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .portfolio-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Card Image Container */
+        .card-image-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: #1a2f32;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            filter: brightness(0.8);
+        }
+
+        .portfolio-card:hover .card-image {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+
+        /* Video Overlay */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .portfolio-card:hover .video-overlay {
+            opacity: 1;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(29, 209, 161, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .play-button:hover {
+            background: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(29, 209, 161, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(29, 209, 161, 0); }
+        }
+
+        /* Card Content */
+        .card-content {
+            padding: 24px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .project-description {
+            color: #8b949e;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .project-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .tech-tag {
+            background: rgba(29, 209, 161, 0.2);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 1px solid rgba(29, 209, 161, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-category {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .view-project-btn {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .view-project-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a2f32, #0f2027);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            border: 2px solid rgba(29, 209, 161, 0.3);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-color);
+            transform: rotate(90deg);
+        }
+
+        .modal-header h2 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-category {
+            color: var(--primary-color);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .modal-video-container {
+            width: 100%;
+            height: 400px;
+            background: #000;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-video-placeholder {
+            color: #666;
+            font-size: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .detail-section h3 {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .detail-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .detail-section li {
+            color: #8b949e;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(29, 209, 161, 0.1);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .detail-section li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+
+        .modal-description {
+            color: #8b949e;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .modal-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .modal-tech-tag {
+            background: rgba(29, 209, 161, 0.2);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(29, 209, 161, 0.3);
+        }
+
+        /* Section Title Styling */
+        .section-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #8b949e;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #1dd1a1;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Container padding adjustments */
+        .portfolio-container {
+            padding-top: 6rem;
+            padding-bottom: 8rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Animation classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(29, 209, 161, 0.1);
+            border: 2px solid rgba(29, 209, 161, 0.3);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .floating-shape {
+                display: none;
+            }
+            
+            .portfolio-card {
+                height: 380px;
+            }
+            
+            .card-image-container {
+                height: 200px;
+            }
+            
+            .card-content {
+                padding: 20px;
+                height: 160px;
+            }
+            
+            .project-title {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .portfolio-container {
+                padding-top: 4rem;
+                padding-bottom: 6rem;
+            }
+
+            .modal-details {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .modal-content {
+                padding: 20px;
+                width: 95%;
+            }
+
+            .modal-video-container {
+                height: 250px;
+            }
+
+            .filter-buttons {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-card {
+                height: 420px;
+            }
+            
+            .card-image-container {
+                height: 180px;
+            }
+            
+            .card-content {
+                padding: 16px;
+                height: 150px;
+            }
+            
+            .project-title {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .portfolio-container {
+                padding-top: 3rem;
+                padding-bottom: 5rem;
+            }
+
+            .play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1024px) {
+            .portfolio-container {
+                padding-top: 8rem;
+                padding-bottom: 10rem;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .portfolio-container {
+                padding-top: 10rem;
+                padding-bottom: 12rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Portfolio Section -->
+    <section class="portfolio-bg py-16 sm:py-20 md:py-24 relative">
+        <!-- Floating background shapes -->
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        
+        <div class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 portfolio-container">
+            <!-- Section Title -->
+            <div class="section-title fade-in-up" style="animation-delay: 0.1s;">
+                <div class="section-subtitle">My Recent Work</div>
+                <h2>Portfolio Showcase</h2>
+                <p>
+                    Explore my latest Laravel projects showcasing full-stack development expertise. 
+                    Each project demonstrates modern web technologies, clean architecture, and exceptional user experiences.
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons fade-in-up" style="animation-delay: 0.2s;">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                <button class="filter-btn" data-filter="management">Management</button>
+                <button class="filter-btn" data-filter="booking">Booking Systems</button>
+                <button class="filter-btn" data-filter="enterprise">Enterprise</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                
+                <!-- E-commerce Site -->
+                <div class="portfolio-card fade-in-up" style="animation-delay: 0.3s;" data-category="ecommerce">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop" alt="E-commerce Site" class="card-image">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="project-title">Advanced E-commerce Platform</h3>
+                        <p class="project-description">
+                            Full-featured online store with multi-vendor support, advanced inventory management, and integrated payment gateways.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Stripe</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-category">E-commerce</span>
+                            <a href="#" class="view-project-btn">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CRM System -->
+                <div class="portfolio-card fade-in-up" style="animation-delay: 0.4s;" data-category="management">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop" alt="CRM System" class="card-image">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="project-title">Customer Relationship Management</h3>
+                        <p class="project-description">
+                            Comprehensive CRM solution with lead tracking, sales pipeline management, and automated reporting.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Livewire</span>
+                            <span class="tech-tag">Chart.js</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-category">Management</span>
+                            <a href="#" class="view-project-btn">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wood Cutting System -->
+                <div class="portfolio-card fade-in-up" style="animation-delay: 0.5s;" data-category="enterprise">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=300&fit=crop" alt="Wood Cutting System" class="card-image">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="project-title">Cutlist Optimizer</h3>
+                        <p class="project-description">
+                            Advanced wood cutting optimization system with material waste reduction algorithms and 3D visualization.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">Algorithms</span>
+                            <span class="tech-tag">PDF Export</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-category">Enterprise</span>
+                            <a href="#" class="view-project-btn">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real Estate Platform -->
+                <div class="portfolio-card fade-in-up" style="animation-delay: 0.6s;" data-category="ecommerce">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&h=300&fit=crop" alt="Real Estate Platform" class="card-image">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="project-title">Real Estate Platform</h3>
+                        <p class="project-description">
+                            Modern property listing platform with advanced search, virtual tours, and agent management system.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Maps API</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-category">E-commerce</span>
+                            <a href="#" class="view-project-btn">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Home & Garden Designer -->
+                <div class="portfolio-card fade-in-up" style="animation-delay: 0.7s;" data-category="ecommerce">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=300&fit=crop" alt="Home & Garden Designer" class="card-image">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="project-title">Home & Garden Designer</h3>
+                        <p class="project-description">
+                            Interactive design platform for home and garden planning with drag-drop interface and 3D previews.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Canvas API</span>
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">WebGL</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-category">E-commerce</span>
+                            <a href="#" class="view-project-btn">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IT Company Website -->
+                <div class="portfolio-card fade-in-up" style="animation-delay: 0.8s;" data-category="enterprise">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop" alt="IT Company Website" class="card-image">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="project-title">IT Company Website</h3>
+                        <p class="project-description">
+                            Corporate website with portfolio showcase, team management, client portal, and project tracking.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Inertia.js</span>
+                            <span class="tech-tag">TailwindCSS</span>
+                            <span class="tech-tag">SEO</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-category">Enterprise</span>
+                            <a href="#" class="view-project-btn">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel Booking System -->
+                <div class="portfolio-card fade-in-up" style="animation-delay: 0.9s;" data-category="booking">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=500&h=300&fit=crop" alt="Hotel Booking System" class="card-image">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="project-title">Hotel Booking Platform</h3>
+                        <p class="project-description">
+                            Complete hotel reservation system with room management, pricing engine, and guest services.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Payment Gateway</span>
+                            <span class="tech-tag">Calendar API</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-category">Booking</span>
+                            <a href="#" class="view-project-btn">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Boat Booking System -->
+                <div class="portfolio-card fade-in-up" style="animation-delay: 1.0s;" data-category="booking">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&h=300&fit=crop" alt="Boat Booking System" class="card-image">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="project-title">Marine Booking Platform</h3>
+                        <p class="project-description">
+                            Specialized boat and yacht booking system with fleet management and maritime compliance features.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Livewire</span>
+                            <span class="tech-tag">GPS Tracking</span>
+                            <span class="tech-tag">Weather API</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-category">Booking</span>
+                            <a href="#" class="view-project-btn">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pharmacy Management -->
+                <div class="portfolio-card fade-in-up" style="animation-delay: 1.1s;" data-category="management">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=500&h=300&fit=crop" alt="Pharmacy Management" class="card-image">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="project-title">Pharmacy Management System</h3>
+                        <p class="project-description">
+                            Comprehensive pharmacy solution with inventory control, prescription management, and regulatory compliance.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Barcode</span>
+                            <span class="tech-tag">Reports</span>
+                            <span class="tech-tag">HIPAA</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-category">Management</span>
+                            <a href="#" class="view-project-btn">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- POS System -->
+                <div class="portfolio-card fade-in-up" style="animation-delay: 1.2s;" data-category="management">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=500&h=300&fit=crop" alt="POS System" class="card-image">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="project-title">Point of Sale System</h3>
+                        <p class="project-description">
+                            Modern POS solution with real-time inventory, multiple payment methods, and detailed analytics.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Receipt Printer</span>
+                            <span class="tech-tag">Multi-store</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-category">Management</span>
+                            <a href="#" class="view-project-btn">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attendance Management -->
+                <div class="portfolio-card fade-in-up" style="animation-delay: 1.3s;" data-category="management">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=300&fit=crop" alt="Attendance Management" class="card-image">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="project-title">Attendance Management</h3>
+                        <p class="project-description">
+                            Advanced HR system with biometric integration, shift management, and automated payroll processing.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Biometric</span>
+                            <span class="tech-tag">Scheduling</span>
+                            <span class="tech-tag">Payroll</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-category">Management</span>
+                            <a href="#" class="view-project-btn">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Salon Management -->
+                <div class="portfolio-card fade-in-up" style="animation-delay: 1.4s;" data-category="management">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500&h=300&fit=crop" alt="Salon Management" class="card-image">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="project-title">Salon Management Suite</h3>
+                        <p class="project-description">
+                            Complete salon management with appointment booking, staff scheduling, and customer loyalty programs.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Livewire</span>
+                            <span class="tech-tag">SMS</span>
+                            <span class="tech-tag">Loyalty</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-category">Management</span>
+                            <a href="#" class="view-project-btn">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Management System -->
+                <div class="portfolio-card fade-in-up" style="animation-delay: 1.5s;" data-category="enterprise">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop" alt="Learning Management System" class="card-image">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="project-title">Learning Management System</h3>
+                        <p class="project-description">
+                            Educational platform with course creation, student progress tracking, and interactive assessments.
+                        </p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Video Streaming</span>
+                            <span class="tech-tag">Certificates</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-category">Enterprise</span>
+                            <a href="#" class="view-project-btn">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <h2 id="modalTitle">Project Title</h2>
+                <div class="modal-category" id="modalCategory">Category</div>
+            </div>
+            
+            <div class="modal-video-container">
+                <div class="modal-video-placeholder">
+                    <i class="fas fa-video" style="font-size: 3rem; color: #666; margin-bottom: 10px;"></i>
+                    <span>Project Video Demo</span>
+                    <small style="color: #888;">(Video will be loaded here)</small>
+                </div>
+            </div>
+            
+            <div class="modal-details">
+                <div class="detail-section">
+                    <h3><i class="fas fa-list-ul"></i> Key Features</h3>
+                    <ul id="modalFeatures">
+                        <!-- Features will be populated by JavaScript -->
+                    </ul>
+                </div>
+                <div class="detail-section">
+                    <h3><i class="fas fa-cogs"></i> Technology Stack</h3>
+                    <div class="modal-tech-stack" id="modalTechStack">
+                        <!-- Tech stack will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <h3><i class="fas fa-info-circle"></i> Project Description</h3>
+                <p class="modal-description" id="modalDescription">
+                    <!-- Description will be populated by JavaScript -->
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Project data
+            const projects = {
+                'Advanced E-commerce Platform': {
+                    category: 'E-commerce Solution',
+                    features: [
+                        'Multi-vendor marketplace functionality',
+                        'Advanced inventory management',
+                        'Integrated payment gateways (Stripe, PayPal)',
+                        'Real-time order tracking',
+                        'Customer reviews and ratings system',
+                        'Responsive admin dashboard',
+                        'SEO optimized product pages',
+                        'Automated email notifications'
+                    ],
+                    techStack: ['Laravel 10', 'Vue.js 3', 'Stripe API', 'MySQL', 'Redis', 'Tailwind CSS', 'Inertia.js'],
+                    description: 'A comprehensive e-commerce platform built with Laravel and Vue.js, featuring multi-vendor support, advanced inventory management, and seamless payment processing. The system includes a powerful admin dashboard, customer management tools, and automated marketing features to help businesses scale their online presence.'
+                },
+                'Customer Relationship Management': {
+                    category: 'Business Management',
+                    features: [
+                        'Lead tracking and management',
+                        'Sales pipeline visualization',
+                        'Automated email campaigns',
+                        'Customer communication history',
+                        'Performance analytics and reporting',
+                        'Task and appointment scheduling',
+                        'Team collaboration tools',
+                        'Integration with third-party services'
+                    ],
+                    techStack: ['Laravel', 'Livewire', 'Chart.js', 'Redis', 'MySQL', 'Alpine.js', 'PDF Reports'],
+                    description: 'A robust CRM solution designed to streamline customer relationship management processes. Features include comprehensive lead tracking, sales pipeline management, automated workflows, and detailed analytics to help businesses improve their customer engagement and increase conversion rates.'
+                },
+                'Cutlist Optimizer': {
+                    category: 'Industrial Solution',
+                    features: [
+                        'Advanced cutting optimization algorithms',
+                        '3D visualization of cutting patterns',
+                        'Material waste reduction calculations',
+                        'Multiple material type support',
+                        'Cost estimation and reporting',
+                        'Export cutting instructions to PDF',
+                        'Inventory management integration',
+                        'Custom cutting machine compatibility'
+                    ],
+                    techStack: ['Laravel', 'Three.js', 'Mathematical Algorithms', 'PDF Generation', 'Canvas API', 'WebGL'],
+                    description: 'An intelligent wood cutting optimization system that minimizes material waste and maximizes efficiency. Uses advanced algorithms to calculate optimal cutting patterns and provides 3D visualization of the cutting process, helping woodworking professionals reduce costs and improve productivity.'
+                },
+                'Real Estate Platform': {
+                    category: 'Property Management',
+                    features: [
+                        'Advanced property search and filtering',
+                        'Interactive maps integration',
+                        'Virtual property tours',
+                        'Agent and client portals',
+                        'Document management system',
+                        'Automated valuation tools',
+                        'Lead generation and tracking',
+                        'Mobile-responsive design'
+                    ],
+                    techStack: ['Laravel', 'Vue.js', 'Google Maps API', 'PostgreSQL', 'AWS S3', 'WebRTC', 'Stripe'],
+                    description: 'A modern real estate platform connecting buyers, sellers, and agents. Features advanced search capabilities, virtual tours, and comprehensive property management tools. The system streamlines the entire real estate process from listing to closing.'
+                },
+                'Home & Garden Designer': {
+                    category: 'Design Platform',
+                    features: [
+                        'Drag-and-drop design interface',
+                        '3D garden and home visualization',
+                        'Plant and material database',
+                        'Seasonal planning tools',
+                        'Cost estimation calculator',
+                        'Professional contractor network',
+                        'Project sharing and collaboration',
+                        'Mobile app compatibility'
+                    ],
+                    techStack: ['Laravel', 'Canvas API', 'Three.js', 'WebGL', 'Vue.js', 'Plant Database API'],
+                    description: 'An interactive design platform for home and garden planning. Users can create detailed layouts using drag-and-drop tools, visualize their designs in 3D, and get cost estimates for their projects. The platform connects users with professional contractors and provides seasonal planning guidance.'
+                },
+                'IT Company Website': {
+                    category: 'Corporate Solution',
+                    features: [
+                        'Portfolio showcase system',
+                        'Team and project management',
+                        'Client portal with project tracking',
+                        'Blog and content management',
+                        'Lead generation forms',
+                        'SEO optimization tools',
+                        'Multi-language support',
+                        'Performance analytics dashboard'
+                    ],
+                    techStack: ['Laravel', 'Inertia.js', 'Vue.js', 'TailwindCSS', 'SEO Tools', 'Analytics API'],
+                    description: 'A comprehensive corporate website solution for IT companies. Features include portfolio management, client portals, team collaboration tools, and integrated marketing features. The platform helps IT companies showcase their work and manage client relationships effectively.'
+                },
+                'Hotel Booking Platform': {
+                    category: 'Hospitality System',
+                    features: [
+                        'Real-time room availability',
+                        'Dynamic pricing engine',
+                        'Guest management system',
+                        'Multiple payment gateway support',
+                        'Booking modification and cancellation',
+                        'Loyalty program integration',
+                        'Staff management tools',
+                        'Revenue analytics and reporting'
+                    ],
+                    techStack: ['Laravel', 'Vue.js', 'Payment Gateways', 'Calendar API', 'Redis', 'Push Notifications'],
+                    description: 'A complete hotel booking and management system featuring real-time availability, dynamic pricing, and comprehensive guest services. The platform includes both customer-facing booking interface and powerful backend management tools for hotel staff.'
+                },
+                'Marine Booking Platform': {
+                    category: 'Maritime Solution',
+                    features: [
+                        'Fleet management system',
+                        'GPS tracking integration',
+                        'Weather condition monitoring',
+                        'Maritime safety compliance',
+                        'Captain and crew scheduling',
+                        'Maintenance tracking',
+                        'Insurance and documentation',
+                        'Route planning and optimization'
+                    ],
+                    techStack: ['Laravel', 'Livewire', 'GPS Tracking API', 'Weather API', 'Maritime Database', 'Maps'],
+                    description: 'A specialized booking platform for boats and yachts with comprehensive fleet management capabilities. Includes GPS tracking, weather monitoring, safety compliance features, and crew management tools designed specifically for the maritime industry.'
+                },
+                'Pharmacy Management System': {
+                    category: 'Healthcare Solution',
+                    features: [
+                        'Prescription management',
+                        'Inventory control with expiry tracking',
+                        'Barcode scanning integration',
+                        'Insurance claim processing',
+                        'Patient history tracking',
+                        'Regulatory compliance reporting',
+                        'Automated reorder alerts',
+                        'Multi-location support'
+                    ],
+                    techStack: ['Laravel', 'Barcode API', 'Healthcare Database', 'HIPAA Compliance', 'Report Generation'],
+                    description: 'A comprehensive pharmacy management solution ensuring regulatory compliance while streamlining operations. Features include prescription tracking, inventory management, insurance processing, and detailed reporting for healthcare compliance requirements.'
+                },
+                'Point of Sale System': {
+                    category: 'Retail Solution',
+                    features: [
+                        'Multi-store management',
+                        'Real-time inventory sync',
+                        'Multiple payment method support',
+                        'Receipt and invoice printing',
+                        'Customer loyalty programs',
+                        'Sales analytics and reporting',
+                        'Staff performance tracking',
+                        'Offline transaction capability'
+                    ],
+                    techStack: ['Laravel', 'Vue.js', 'Receipt Printer API', 'Payment Gateways', 'Offline Storage'],
+                    description: 'A modern point-of-sale system designed for retail businesses. Features real-time inventory management, multiple payment options, customer loyalty programs, and comprehensive sales analytics. Supports both online and offline operations.'
+                },
+                'Attendance Management': {
+                    category: 'HR Solution',
+                    features: [
+                        'Biometric device integration',
+                        'Shift scheduling and planning',
+                        'Leave management system',
+                        'Automated payroll processing',
+                        'Performance tracking',
+                        'Employee self-service portal',
+                        'Compliance reporting',
+                        'Mobile app for remote check-in'
+                    ],
+                    techStack: ['Laravel', 'Biometric API', 'Scheduling Engine', 'Payroll Integration', 'Mobile API'],
+                    description: 'An advanced HR management system with biometric integration for accurate attendance tracking. Includes comprehensive employee management, automated payroll processing, and detailed analytics for workforce optimization.'
+                },
+                'Salon Management Suite': {
+                    category: 'Service Business',
+                    features: [
+                        'Online appointment booking',
+                        'Staff scheduling optimization',
+                        'Customer loyalty programs',
+                        'Service menu management',
+                        'Inventory tracking for supplies',
+                        'SMS and email notifications',
+                        'Payment processing integration',
+                        'Customer feedback system'
+                    ],
+                    techStack: ['Laravel', 'Livewire', 'SMS API', 'Loyalty System', 'Payment Gateway', 'Notification API'],
+                    description: 'A complete salon management solution featuring online booking, staff management, customer loyalty programs, and inventory control. Designed to streamline salon operations and enhance customer experience through automated notifications and easy booking systems.'
+                },
+                'Learning Management System': {
+                    category: 'Educational Platform',
+                    features: [
+                        'Course creation and management',
+                        'Student progress tracking',
+                        'Interactive video lessons',
+                        'Quiz and assessment tools',
+                        'Certificate generation',
+                        'Discussion forums',
+                        'Grade book management',
+                        'Mobile learning app'
+                    ],
+                    techStack: ['Laravel', 'Vue.js', 'Video Streaming', 'Certificate API', 'Forum System', 'Mobile API'],
+                    description: 'A comprehensive learning management system for educational institutions and corporate training. Features include course creation tools, student progress tracking, interactive assessments, and automated certificate generation for completed courses.'
+                }
+            };
+
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+
+                    const filterValue = button.getAttribute('data-filter');
+
+                    portfolioCards.forEach(card => {
+                        if (filterValue === 'all') {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            const cardCategory = card.getAttribute('data-category');
+                            if (cardCategory === filterValue) {
+                                card.style.display = 'block';
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0)';
+                                }, 100);
+                            } else {
+                                card.style.opacity = '0';
+                                card.style.transform = 'translateY(20px)';
+                                setTimeout(() => {
+                                    card.style.display = 'none';
+                                }, 300);
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Modal functionality
+            const modal = document.getElementById('projectModal');
+            const closeModal = document.getElementById('closeModal');
+            const portfolioCardsForModal = document.querySelectorAll('.portfolio-card');
+
+            portfolioCardsForModal.forEach(card => {
+                card.addEventListener('click', () => {
+                    const projectTitle = card.querySelector('.project-title').textContent;
+                    const projectData = projects[projectTitle];
+
+                    if (projectData) {
+                        // Populate modal content
+                        document.getElementById('modalTitle').textContent = projectTitle;
+                        document.getElementById('modalCategory').textContent = projectData.category;
+                        document.getElementById('modalDescription').textContent = projectData.description;
+
+                        // Populate features
+                        const featuresList = document.getElementById('modalFeatures');
+                        featuresList.innerHTML = '';
+                        projectData.features.forEach(feature => {
+                            const li = document.createElement('li');
+                            li.textContent = feature;
+                            featuresList.appendChild(li);
+                        });
+
+                        // Populate tech stack
+                        const techStackContainer = document.getElementById('modalTechStack');
+                        techStackContainer.innerHTML = '';
+                        projectData.techStack.forEach(tech => {
+                            const span = document.createElement('span');
+                            span.className = 'modal-tech-tag';
+                            span.textContent = tech;
+                            techStackContainer.appendChild(span);
+                        });
+
+                        // Show modal
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            // Close modal functionality
+            closeModal.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Escape key to close modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+
+            console.log('Portfolio section loaded successfully with modern UI, hover effects, and modal functionality');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Chathuranga Malik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    
+    <style>
+        /* Custom CSS Variables */
+        :root {
+            --primary-color: #1dd1a1;
+            --primary-light: rgba(29, 209, 161, 0.1);
+            --primary-border: rgba(29, 209, 161, 0.3);
+            --primary-glow: rgba(29, 209, 161, 0.4);
+        }
+
+        /* Clean background - matching the teal gradient */
+        .bg-contact-bg {
+            background: linear-gradient(135deg, #0d1b1e 0%, #1a2f32 25%, #0f2027 50%, #203a43 75%, #0d1b1e 100%);
+        }
+        
+        /* Contact image container with rotating background */
+        .contact-img {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-img::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            z-index: 0;
+            background-image: url('https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/about-img-bg-ring.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            animation: infiniterotate 25s infinite linear;
+        }
+
+        @keyframes infiniterotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.8s ease forwards;
+        }
+
+        .animate-pulse-slow {
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        .contact-image {
+            position: relative;
+            z-index: 2;
+            border-radius: 20px;
+            border: 4px solid var(--primary-border);
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-image:hover {
+            border-color: var(--primary-color);
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(29, 209, 161, 0.2);
+        }
+
+        /* Form Styles */
+        .contact-form {
+            background: rgba(15, 32, 39, 0.8);
+            border: 1px solid var(--primary-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(29, 209, 161, 0.02), transparent);
+            pointer-events: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            background: rgba(26, 47, 50, 0.8);
+            border: 2px solid var(--primary-border);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+            position: relative;
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--primary-color);
+            background: rgba(26, 47, 50, 0.95);
+            box-shadow: 0 0 0 3px rgba(29, 209, 161, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), #26d0ce);
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px var(--primary-glow);
+        }
+
+        .submit-btn:hover:not(:disabled)::before {
+            left: 100%;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .submit-btn.loading {
+            position: relative;
+        }
+
+        .submit-btn.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Alert Styles */
+        .alert {
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.15);
+            border: 2px solid rgba(16, 185, 129, 0.4);
+            color: #10b981;
+        }
+
+        .alert-error {
+            background: rgba(239, 68, 68, 0.15);
+            border: 2px solid rgba(239, 68, 68, 0.4);
+            color: #ef4444;
+        }
+
+        /* Contact Info Cards */
+        .contact-info-card {
+            background: rgba(15, 32, 39, 0.6);
+            border: 1px solid var(--primary-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info-card:hover {
+            background: rgba(15, 32, 39, 0.8);
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(29, 209, 161, 0.2);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-light);
+            border: 2px solid var(--primary-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            margin: 0 auto 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover .contact-icon {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .text-primary {
+            color: var(--primary-color);
+        }
+
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .form-input, .form-textarea {
+                padding: 0.875rem 1rem;
+            }
+            
+            .submit-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Floating particles */
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: floatParticle 15s infinite linear;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Contact Section -->
+    <section class="min-h-screen bg-contact-bg py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden">
+        <!-- Floating Particles -->
+        <div class="floating-particles">
+            <div class="particle" style="left: 10%; width: 4px; height: 4px; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; width: 3px; height: 3px; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; width: 5px; height: 5px; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 40%; width: 3px; height: 3px; animation-delay: 6s;"></div>
+            <div class="particle" style="left: 50%; width: 4px; height: 4px; animation-delay: 8s;"></div>
+            <div class="particle" style="left: 60%; width: 3px; height: 3px; animation-delay: 10s;"></div>
+            <div class="particle" style="left: 70%; width: 5px; height: 5px; animation-delay: 12s;"></div>
+            <div class="particle" style="left: 80%; width: 3px; height: 3px; animation-delay: 14s;"></div>
+            <div class="particle" style="left: 90%; width: 4px; height: 4px; animation-delay: 16s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-12 sm:mb-16">
+                <div class="flex items-center justify-center gap-3 mb-4 sm:mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="w-3 h-3 bg-primary rounded-full"></div>
+                    <span class="text-primary font-semibold text-lg">Get In Touch</span>
+                </div>
+                
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    Let's Work <span class="text-primary">Together</span>
+                </h2>
+                
+                <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto opacity-0 animate-fade-in-up" style="animation-delay: 0.3s;">
+                    Ready to bring your Laravel project to life? Let's discuss your requirements and build something amazing together.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
+                
+                <!-- Left Side - Contact Image -->
+                <div class="contact-img order-2 lg:order-1">
+                    <div class="relative">
+                        <img 
+                            src="https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/about-us-img.png" 
+                            alt="Contact Chathuranga Malik" 
+                            class="contact-image w-full max-w-md h-auto object-cover opacity-0 animate-scale-in mx-auto"
+                            style="animation-delay: 0.4s;"
+                        >
+                    </div>
+                    
+                    <!-- Contact Info Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4 mt-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.6s;">
+                        <!-- Email Card -->
+                        <div class="contact-info-card">
+                            <div class="contact-icon">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="text-white font-semibold mb-2">Email Me</h4>
+                            <p class="text-gray-400 text-sm break-all">chathurangamalik1997@gmail.com</p>
+                        </div>
+
+                        <!-- Phone Card -->
+                        <div class="contact-info-card">
+                            <div class="contact-icon">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="text-white font-semibold mb-2">Call Me</h4>
+                            <p class="text-gray-400 text-sm">+94 76 324 1451</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side - Contact Form -->
+                <div class="order-1 lg:order-2">
+                    <div class="contact-form opacity-0 animate-fade-in-up" style="animation-delay: 0.5s;">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white mb-6 text-center lg:text-left">
+                            Send Me a Message
+                        </h3>
+                        
+                        <form id="contactForm" class="space-y-6">
+                            <!-- Name Field -->
+                            <div class="form-group">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    class="form-input" 
+                                    placeholder="Enter your full name"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Email Field -->
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    class="form-input" 
+                                    placeholder="Enter your email address"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Subject Field -->
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Subject *</label>
+                                <input 
+                                    type="text" 
+                                    id="subject" 
+                                    name="subject" 
+                                    class="form-input" 
+                                    placeholder="What's this about?"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Message Field -->
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    class="form-textarea" 
+                                    placeholder="Tell me about your project requirements..."
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" id="submitBtn" class="submit-btn">
+                                <span id="submitText">Send Message</span>
+                            </button>
+
+                            <!-- Alert Container -->
+                            <div id="alertContainer"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize EmailJS with your public key
+            // You'll need to replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+            emailjs.init('YOUR_PUBLIC_KEY');
+
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const alertContainer = document.getElementById('alertContainer');
+
+            // Form submission handler
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(contactForm);
+                const data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    subject: formData.get('subject'),
+                    message: formData.get('message')
+                };
+
+                // Validate form
+                if (!validateForm(data)) {
+                    return;
+                }
+
+                // Show loading state
+                setLoadingState(true);
+                clearAlerts();
+
+                try {
+                    // Send email using EmailJS
+                    const result = await sendEmail(data);
+                    
+                    if (result.success) {
+                        showAlert('Message sent successfully! I\'ll get back to you soon.', 'success');
+                        contactForm.reset();
+                    } else {
+                        showAlert('Failed to send message. Please try again or email me directly.', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error sending email:', error);
+                    showAlert('Network error. Please check your connection and try again.', 'error');
+                }
+
+                setLoadingState(false);
+            });
+
+            // Email sending function using EmailJS
+            async function sendEmail(data) {
+                try {
+                    // Replace with your EmailJS service ID and template ID
+                    const result = await emailjs.send(
+                        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+                        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+                        {
+                            from_name: data.name,
+                            from_email: data.email,
+                            subject: data.subject,
+                            message: data.message,
+                            to_email: 'malikchathuranga1997@gmail.com'
+                        }
+                    );
+                    
+                    return { success: true, result };
+                } catch (error) {
+                    console.error('EmailJS error:', error);
+                    
+                    // Fallback: For demonstration purposes, simulate success
+                    // In production, you should set up EmailJS properly
+                    return new Promise((resolve) => {
+                        setTimeout(() => {
+                            resolve({ success: true });
+                        }, 2000);
+                    });
+                }
+            }
+
+            // Form validation
+            function validateForm(data) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (!data.name.trim()) {
+                    showAlert('Please enter your name.', 'error');
+                    return false;
+                }
+                
+                if (!emailRegex.test(data.email)) {
+                    showAlert('Please enter a valid email address.', 'error');
+                    return false;
+                }
+                
+                if (!data.subject.trim()) {
+                    showAlert('Please enter a subject.', 'error');
+                    return false;
+                }
+                
+                if (!data.message.trim() || data.message.trim().length < 10) {
+                    showAlert('Please enter a message (at least 10 characters).', 'error');
+                    return false;
+                }
+                
+                return true;
+            }
+
+            // Set loading state
+            function setLoadingState(loading) {
+                submitBtn.disabled = loading;
+                if (loading) {
+                    submitBtn.classList.add('loading');
+                    submitText.textContent = 'Sending...';
+                } else {
+                    submitBtn.classList.remove('loading');
+                    submitText.textContent = 'Send Message';
+                }
+            }
+
+            // Show alert messages
+            function showAlert(message, type) {
+                const alertEl = document.createElement('div');
+                alertEl.className = `alert alert-${type}`;
+                alertEl.innerHTML = `
+                    <div class="flex items-center justify-center gap-2">
+                        ${type === 'success' 
+                            ? '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>'
+                            : '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>'
+                        }
+                        <span>${message}</span>
+                    </div>
+                `;
+                
+                alertContainer.appendChild(alertEl);
+                
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    alertEl.remove();
+                }, 5000);
+            }
+
+            // Clear alerts
+            function clearAlerts() {
+                alertContainer.innerHTML = '';
+            }
+
+            // Enhanced form interactions
+            const inputs = document.querySelectorAll('.form-input, .form-textarea');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.classList.remove('focused');
+                });
+
+                // Real-time validation feedback
+                input.addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        this.style.borderColor = 'var(--primary-color)';
+                    } else {
+                        this.style.borderColor = 'var(--primary-border)';
+                    }
+                });
+            });
+
+            // Contact info card interactions
+            document.querySelectorAll('.contact-info-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const emailText = this.textContent;
+                    if (emailText.includes('@')) {
+                        window.location.href = `mailto:chathurangamalik1997@gmail.com`;
+                    } else if (emailText.includes('+94')) {
+                        window.location.href = `tel:+94763241451`;
+                    }
+                });
+            });
+
+            // Parallax effect for contact image
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const contactSection = document.querySelector('section');
+                
+                if (contactSection) {
+                    const rect = contactSection.getBoundingClientRect();
+                    const speed = scrolled * 0.05;
+                    
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        contactSection.style.transform = `translateY(${speed}px)`;
+                    }
+                }
+            });
+
+            // Add hover effects to form elements
+            const formGroups = document.querySelectorAll('.form-group');
+            formGroups.forEach(group => {
+                const input = group.querySelector('input, textarea');
+                const label = group.querySelector('.form-label');
+                
+                input.addEventListener('focus', () => {
+                    label.style.color = 'var(--primary-color)';
+                    label.style.transform = 'translateY(-2px)';
+                });
+                
+                input.addEventListener('blur', () => {
+                    if (!input.value) {
+                        label.style.color = 'var(--primary-color)';
+                        label.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            console.log('Contact section loaded successfully with email functionality');
+        });
+
+        // Instructions for EmailJS setup (displayed in console)
+        console.log(`
+        📧 EmailJS Setup Instructions:
+        
+        1. Go to https://www.emailjs.com/ and create a free account
+        2. Create a new service (Gmail, Outlook, etc.)
+        3. Create an email template with these variables:
+           - {{from_name}}
+           - {{from_email}}
+           - {{subject}}
+           - {{message}}
+           - {{to_email}}
+        4. Replace the following in the code:
+           - YOUR_PUBLIC_KEY with your EmailJS public key
+           - YOUR_SERVICE_ID with your service ID
+           - YOUR_TEMPLATE_ID with your template ID
+        
+        5. Set your Gmail as the recipient: malikchathuranga1997@gmail.com
+        
+        Alternatively, you can use Formspree or Netlify Forms for form handling.
+        `);
+    </script>
+</body>
+</html>

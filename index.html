@@ -83,29 +83,41 @@
             background-attachment: fixed;
         }
 
-        /* Improved iframe styling with better height management */
-        .services-iframe, .about-iframe, .footer-iframe {
+        /* Improved iframe styling with better height management - UPDATED TO INCLUDE CONTACT */
+        .services-iframe, .about-iframe, .contact-iframe, .footer-iframe {
             border: none;
             width: 100%;
             display: block;
             transition: height 0.3s ease;
         }
 
-        /* Specific iframe height management - IMPROVED FOR MOBILE */
+        /* Specific iframe height management - IMPROVED FOR MOBILE WITH CONTACT */
         .services-iframe {
-            min-height: 1200px; /* Increased for desktop */
+            min-height: 2000px; /* Increased for desktop */
+        }
+
+        .portfolio-iframe {
+            border: none;
+            width: 100%;
+            display: block;
+            transition: height 0.3s ease;
+            min-height: 3200px; /* Base height for desktop */
         }
 
         .about-iframe {
             min-height: 900px; /* Increased for desktop */
         }
 
-        .footer-iframe {
-            min-height: 10px; /* Increased for desktop */
+        .contact-iframe {
+            min-height: 1100px; /* Contact section height for desktop */
         }
 
-        /* Remove height constraints to allow natural sizing */
-        #services, #about, #footer {
+        .footer-iframe {
+            min-height: 600px; /* Increased for desktop */
+        }
+
+        /* Remove height constraints to allow natural sizing - UPDATED TO INCLUDE CONTACT */
+        #services, #about, #contact, #footer {
             height: auto;
             overflow: visible;
         }
@@ -247,7 +259,7 @@
             cursor: auto !important;
         }
         
-        /* Mobile responsiveness - GREATLY IMPROVED */
+        /* Mobile responsiveness - GREATLY IMPROVED WITH CONTACT SECTION */
         @media (max-width: 768px) {
             .hero-bg {
                 background-attachment: scroll;
@@ -257,8 +269,16 @@
                 min-height: 1200px; /* Significantly increased for mobile */
             }
 
+            .portfolio-iframe {
+                min-height: 1800px; /* Portfolio needs more height on mobile */
+            }
+
             .about-iframe {
-                min-height:1200px; /* Significantly increased for mobile */
+                min-height: 1200px; /* Significantly increased for mobile */
+            }
+
+            .contact-iframe {
+                min-height: 1300px; /* Contact section for mobile */
             }
 
             .footer-iframe {
@@ -266,14 +286,22 @@
             }
         }
 
-        /* Small mobile devices */
+        /* Small mobile devices - CONTACT SECTION INCLUDED */
         @media (max-width: 480px) {
             .services-iframe {
                 min-height: 2150px; /* Even more for small screens */
             }
 
+            .portfolio-iframe {
+                min-height: 6500px; /* Even more for small screens */
+            }
+
             .about-iframe {
                 min-height: 1200px; /* Even more for small screens */
+            }
+
+            .contact-iframe {
+                min-height: 1500px; /* Contact section for small screens */
             }
 
             .footer-iframe {
@@ -281,14 +309,22 @@
             }
         }
 
-        /* Very small mobile devices */
+        /* Very small mobile devices - CONTACT SECTION INCLUDED */
         @media (max-width: 360px) {
             .services-iframe {
                 min-height: 1600px; /* Maximum for very small screens */
             }
 
+            .portfolio-iframe {
+                min-height: 2400px; /* Maximum for very small screens */
+            }
+
             .about-iframe {
                 min-height: 1300px; /* Maximum for very small screens */
+            }
+
+            .contact-iframe {
+                min-height: 1600px; /* Contact section for very small screens */
             }
 
             .footer-iframe {
@@ -504,6 +540,28 @@
         </iframe>
     </section>
 
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="relative">
+        <iframe 
+            src="portfolio.html" 
+            class="portfolio-iframe" 
+            frameborder="0" 
+            scrolling="no"
+            onload="autoResizeIframe(this)">
+        </iframe>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative">
+        <iframe 
+            src="contact.html" 
+            class="contact-iframe" 
+            frameborder="0" 
+            scrolling="no"
+            onload="autoResizeIframe(this)">
+        </iframe>
+    </section>
+
     <!-- Footer Section -->
     <section id="footer" class="relative">
         <iframe 
@@ -554,7 +612,7 @@
     </div>
 
     <script>
-        // Improved auto-resize iframe function with MUCH better mobile height management
+        // Improved auto-resize iframe function with CONTACT SECTION PROPERLY INCLUDED
         function autoResizeIframe(iframe) {
             // Determine screen size
             const isMobile = window.innerWidth <= 768;
@@ -564,12 +622,16 @@
             // Set better initial heights based on iframe type and screen size
             const iframeType = iframe.classList.contains('services-iframe') ? 'services' :
                               iframe.classList.contains('about-iframe') ? 'about' :
+                              iframe.classList.contains('portfolio-iframe') ? 'portfolio' :
+                              iframe.classList.contains('contact-iframe') ? 'contact' :
                               iframe.classList.contains('footer-iframe') ? 'footer' : 'default';
             
-            // Much more generous initial height settings
+            // Much more generous initial height settings INCLUDING CONTACT
             const initialHeights = {
                 services: isVerySmallMobile ? 1600 : isSmallMobile ? 1400 : isMobile ? 1200 : 1200,
                 about: isVerySmallMobile ? 1100 : isSmallMobile ? 1000 : isMobile ? 900 : 900,
+                portfolio: isVerySmallMobile ? 2400 : isSmallMobile ? 2200 : isMobile ? 1800 : 1400,
+                contact: isVerySmallMobile ? 1600 : isSmallMobile ? 1500 : isMobile ? 1300 : 1100,
                 footer: isVerySmallMobile ? 800 : isSmallMobile ? 700 : isMobile ? 600 : 600,
                 default: isMobile ? 800 : 600
             };
@@ -591,10 +653,11 @@
                         }
                     }
                 } catch (e) {
-                    // Cross-origin fallback with much better mobile heights
+                    // Cross-origin fallback with much better mobile heights INCLUDING CONTACT
                     const fallbackHeights = {
                         services: isVerySmallMobile ? 1800 : isSmallMobile ? 1600 : isMobile ? 1400 : 1400,
                         about: isVerySmallMobile ? 1200 : isSmallMobile ? 1100 : isMobile ? 1000 : 1000,
+                        contact: isVerySmallMobile ? 1700 : isSmallMobile ? 1600 : isMobile ? 1400 : 1200,
                         footer: isVerySmallMobile ? 900 : isSmallMobile ? 800 : isMobile ? 700 : 700,
                         default: isMobile ? 1000 : 800
                     };
@@ -848,15 +911,19 @@ PROJECTS
             // Make showAlertModal available to iframe components
             window.showAlertModal = showAlertModal;
 
-            // Window resize handler for iframes with improved responsiveness
+            // Window resize handler for iframes with improved responsiveness INCLUDING CONTACT
             window.addEventListener('resize', () => {
                 const servicesIframe = document.querySelector('.services-iframe');
                 const aboutIframe = document.querySelector('.about-iframe');
+                const portfolioIframe = document.querySelector('.portfolio-iframe');
+                const contactIframe = document.querySelector('.contact-iframe');
                 const footerIframe = document.querySelector('.footer-iframe');
                 
-                // Re-resize all iframes on window resize
+                // Re-resize all iframes on window resize INCLUDING CONTACT
                 if (servicesIframe) autoResizeIframe(servicesIframe);
                 if (aboutIframe) autoResizeIframe(aboutIframe);
+                if (portfolioIframe) autoResizeIframe(portfolioIframe);
+                if (contactIframe) autoResizeIframe(contactIframe);
                 if (footerIframe) autoResizeIframe(footerIframe);
             });
         });
