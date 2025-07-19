@@ -13,40 +13,22 @@
             --primary-light: rgba(29, 209, 161, 0.1);
             --primary-border: rgba(29, 209, 161, 0.2);
             --primary-glow: rgba(29, 209, 161, 0.4);
-            /* Matching your existing background colors */
-            --dark-bg: #0d1b1e;
-            --dark-surface: #1a2f32;
-            --dark-overlay: #0f2027;
-            --dark-accent: #203a43;
+            /* Updated to match navbar dark background */
+            --dark-bg: #0f1729;
+            --dark-surface: #1e293b;
+            --dark-overlay: #334155;
+            --dark-accent: #475569;
             --text-muted: #8b949e;
         }
 
-        /* Footer Background - Matching your existing gradient */
+        /* Footer Background - Updated to match navbar style */
         .footer-bg {
-            background: linear-gradient(135deg, #0d1b1e 0%, #1a2f32 25%, #0f2027 50%, #203a43 75%, #0d1b1e 100%);
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(29, 209, 161, 0.1);
             position: relative;
             overflow: hidden;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        /* Subtle grid pattern */
-        .footer-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(29, 209, 161, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(29, 209, 161, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: gridFloat 20s ease-in-out infinite;
-        }
-
-        @keyframes gridFloat {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(10px, 5px); }
         }
 
         /* Minimal floating accent */
@@ -54,7 +36,7 @@
             position: absolute;
             width: 200px;
             height: 200px;
-            background: radial-gradient(circle, rgba(29, 209, 161, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(29, 209, 161, 0.05) 0%, transparent 70%);
             border-radius: 50%;
             top: 20%;
             right: 10%;
@@ -63,8 +45,8 @@
         }
 
         @keyframes floatAccent {
-            0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
-            50% { transform: translateY(-30px) scale(1.1); opacity: 0.8; }
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+            50% { transform: translateY(-30px) scale(1.1); opacity: 0.5; }
         }
 
         /* Clean logo with subtle glow */
@@ -296,42 +278,10 @@
             box-shadow: 0 4px 12px rgba(29, 209, 161, 0.3);
         }
 
-        /* Bottom section */
+        /* Bottom section - Updated for cleaner look */
         .footer-bottom {
             border-top: 1px solid var(--primary-border);
             background: rgba(0, 0, 0, 0.2);
-        }
-
-        /* Scroll to top button */
-        .scroll-top {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--primary-color), #26d0ce);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(29, 209, 161, 0.3);
-            border: none;
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-top:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 8px 30px rgba(29, 209, 161, 0.4);
         }
 
         /* Animation classes */
@@ -361,11 +311,6 @@
             
             .newsletter-card {
                 padding: 20px;
-            }
-
-            .scroll-top {
-                right: 16px;
-                bottom: 16px;
             }
         }
 
@@ -490,11 +435,12 @@
                 <div class="fade-in-up" style="animation-delay: 0.2s;">
                     <h4 class="section-title text-lg">Quick Links</h4>
                     <nav class="space-y-2">
-                        <a href="#home" class="nav-link block">Home</a>
-                        <a href="#about" class="nav-link block">About</a>
-                        <a href="#services" class="nav-link block">Services</a>
-                        <a href="#portfolio" class="nav-link block">Portfolio</a>
-                        <a href="#contact" class="nav-link block">Contact</a>
+                        <a href="#home" class="nav-link block" onclick="parent.postMessage({ action: 'scrollTo', target: '#home' }, '*')">Home</a>
+                        <a href="#about" class="nav-link block" onclick="parent.postMessage({ action: 'scrollTo', target: '#about' }, '*')">About</a>
+                        <a href="#services" class="nav-link block" onclick="parent.postMessage({ action: 'scrollTo', target: '#services' }, '*')">Services</a>
+                        <a href="#portfolio" class="nav-link block" onclick="parent.postMessage({ action: 'scrollTo', target: '#portfolio' }, '*')">Portfolio</a>
+                        <a href="#contact" class="nav-link block" onclick="parent.postMessage({ action: 'scrollTo', target: '#contact' }, '*')">Contact</a>
+
                     </nav>
                 </div>
                 
@@ -576,13 +522,6 @@
             </div>
         </div>
     </footer>
-    
-    <!-- Clean Scroll to Top Button -->
-    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-        </svg>
-    </button>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -604,24 +543,6 @@
             document.querySelectorAll('.fade-in-up').forEach(el => {
                 el.style.animationPlayState = 'paused';
                 observer.observe(el);
-            });
-
-            // Smooth scroll to top functionality
-            const scrollTopBtn = document.getElementById('scrollTop');
-            
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 200) {
-                    scrollTopBtn.classList.add('visible');
-                } else {
-                    scrollTopBtn.classList.remove('visible');
-                }
-            });
-            
-            scrollTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
             });
 
             // Enhanced newsletter form with email collection
@@ -792,18 +713,6 @@
             `;
             document.head.appendChild(rippleStyle);
 
-            // Performance optimization for scroll events
-            let ticking = false;
-            
-            function requestTick() {
-                if (!ticking) {
-                    requestAnimationFrame(() => {
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }
-
             // Add floating animation to accent
             const floatingAccent = document.querySelector('.floating-accent');
             if (floatingAccent) {
@@ -820,7 +729,7 @@
                 });
             }
 
-            console.log('Clean footer loaded successfully with all features');
+            console.log('Clean footer loaded successfully with all features (no scroll to top)');
         });
     </script>
 </body>
