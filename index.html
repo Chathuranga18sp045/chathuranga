@@ -56,11 +56,13 @@
                         }
                     },
                     backgroundImage: {
-                        'hero-pattern': 'linear-gradient(to right, rgba(10, 46, 42, 0.9) 0%, rgba(10, 46, 42, 0.7) 30%, rgba(10, 46, 42, 0.3) 50%, transparent 100%), url("https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/hero-bg.jpg")',
-                        'logo-gradient': 'linear-gradient(135deg, #1dd1a1, #26d0ce)',
-                        'btn-gradient': 'linear-gradient(135deg, #1dd1a1, #26d0ce)',
-                        'text-gradient': 'linear-gradient(135deg, #1dd1a1, #26d0ce)'
+                    'hero-pattern':
+                        'linear-gradient(to right, rgba(10, 46, 42, 0.9) 0%, rgba(10, 46, 42, 0.7) 30%, rgba(10, 46, 42, 0.3) 50%, transparent 100%), url("Images/my1.png")',
+                    'logo-gradient': 'linear-gradient(135deg, #1dd1a1, #26d0ce)',
+                    'btn-gradient':  'linear-gradient(135deg, #1dd1a1, #26d0ce)',
+                    'text-gradient': 'linear-gradient(135deg, #1dd1a1, #26d0ce)'
                     }
+
                 }
             }
         }
@@ -76,7 +78,7 @@
         
         .hero-bg {
             background: linear-gradient(to right, rgba(10, 46, 42, 0.9) 0%, rgba(10, 46, 42, 0.7) 30%, rgba(10, 46, 42, 0.3) 50%, transparent 100%), 
-                        url('https://demo.awaikenthemes.com/pixion/wp-content/uploads/2025/02/hero-bg.jpg');
+                        url('Images/my1.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -630,9 +632,13 @@
         
         /* Mobile responsiveness - GREATLY IMPROVED WITH CONTACT SECTION */
         @media (max-width: 768px) {
-            .hero-bg {
-                background-attachment: scroll;
-            }
+    .hero-bg {
+        background: linear-gradient(to right, rgba(10, 46, 42, 0.9) 0%, rgba(10, 46, 42, 0.7) 30%, rgba(10, 46, 42, 0.3) 50%, transparent 100%),
+                    url('Images/my3.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll; /* Prevent fixed background issues on mobile */
+    }
 
             .services-iframe {
                 min-height: 2200px; /* Significantly increased for mobile */
