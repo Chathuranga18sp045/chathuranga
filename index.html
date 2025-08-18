@@ -1291,72 +1291,14 @@
 
             // CV Download Function - Updated with real contact info
             function downloadCV() {
-                const cvContent = `
-CHATHURANGA MALIK
-Software Engineer - Laravel Specialist
-
-Contact Information:
-📧 Email: chathurangamalik1997@gmail.com
-📱 Phone: +94763241451
-📱 WhatsApp: +94763241451
-🌍 Location: Sri Lanka
-💼 LinkedIn: www.linkedin.com/in/chathuranga-malik-b61295201
-🐙 GitHub: https://github.com/Chathuranga18sp045
-📘 Facebook: https://www.facebook.com/chathuranga.malik/
-
-PROFESSIONAL SUMMARY
-Passionate Software Engineer with 2+ years of experience in Laravel development. 
-Specialized in building robust, scalable web applications using Laravel framework with Vue.js, 
-Inertia.js, and Livewire. Committed to delivering exceptional user experiences and clean code.
-
-TECHNICAL SKILLS
-• Backend Framework: Laravel (PHP) - 2+ years
-• Frontend: Vue.js, Inertia.js, Livewire, HTML5, CSS3, Tailwind CSS
-• Programming Languages: PHP, JavaScript, TypeScript
-• Database: MySQL, PostgreSQL, MongoDB
-• API Development: REST APIs, Laravel Sanctum, Passport
-• Tools & Technologies: Git, Docker, Composer, NPM, AWS
-• Testing: PHPUnit, Laravel Dusk
-
-CORE EXPERTISE
-• Laravel Framework Development
-• Vue.js with Inertia.js Integration
-• Livewire for Dynamic Components
-• RESTful API Development
-• Database Design & Optimization
-• Authentication & Authorization
-• Payment Gateway Integration
-• Real-time Applications
-
-EXPERIENCE
-Laravel Developer | Company Name | 2023 - Present
-• Developed and maintained Laravel applications with Vue.js frontends
-• Implemented Inertia.js for seamless SPA experiences
-• Built dynamic components using Livewire
-• Created secure REST APIs with Laravel Sanctum
-• Optimized database queries and application performance
-
-EDUCATION
-Bachelor's Degree in Computer Science/Software Engineering
-University Name | Year
-
-PROJECTS
-• E-commerce Platform: Laravel + Vue.js + Inertia.js
-• CRM System: Laravel + Livewire + Tailwind CSS
-• API-driven Mobile App Backend: Laravel + REST API
-• Real-time Chat Application: Laravel + WebSockets
-                `;
-
-                const blob = new Blob([cvContent], { type: 'text/plain' });
-                const url = window.URL.createObjectURL(blob);
+                const pdfUrl = 'Documents/ChathurangaLakmal.pdf'; // relative path inside your project
                 const a = document.createElement('a');
-                a.href = url;
-                a.download = 'Chathuranga_Malik_Laravel_Developer_CV.txt';
+                a.href = pdfUrl;
+                a.download = 'Chathuranga_Malik_CV.pdf'; // file name on download
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
-                window.URL.revokeObjectURL(url);
-                
+
                 // Show custom thank you modal
                 showAlertModal();
             }
