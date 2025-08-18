@@ -1291,10 +1291,10 @@
 
             // CV Download Function - Updated with real contact info
             function downloadCV() {
-                const pdfUrl = 'Documents/ChathurangaLakmal.pdf'; // relative path inside your project
+                const pdfUrl = 'Documents/ChathurangaLakmal.pdf'; 
                 const a = document.createElement('a');
                 a.href = pdfUrl;
-                a.download = 'Chathuranga_Malik_CV.pdf'; // file name on download
+                a.download = 'Chathuranga_Malik_CV.pdf'; 
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
